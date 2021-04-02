@@ -1,13 +1,15 @@
+var initialTime = (new Date()).getTime();
+
 window.addEventListener("load", () => {
-    setTimeout(loadcss, 3000);
+    delay = 3000;
+    loadingTime = (new Date()).getTime() - initialTime;
+    (loadingTime > delay) ?
+        loadcss() :
+        setTimeout(loadcss, delay - loadingTime);
 });
 
 
 function loadcss() {
-    var link = document.createElement("link");
-    link.href = "main.css";
-    link.type = "text/css";
-    link.rel = "stylesheet";
+    var link = document.getElementById('maincss');
     link.media = "screen,print";
-    document.getElementsByTagName("head")[0].appendChild(link);
 }
