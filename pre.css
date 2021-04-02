@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+#animated-logo {
+    fill: black;
+    stroke: white;
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    /* animation: strokeLogo 2s ease-in-out forwards; */
+    animation: strokeLogo 4s ease-in infinite;
+}
+
+/* 
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: white;
+    }
+
+    .logo > .outline {
+        fill: black;
+    }
+
+    .logo > .fill {
+        fill: white;
+    }
+} */
+
+@keyframes strokeLogo {
+    0% {
+        stroke-dashoffset: 400;
+    }
+
+    50% {
+        stroke-dashoffset: 0;
+    }
+
+    100% {
+        stroke-dashoffset: -400;
+    }
+}
+
