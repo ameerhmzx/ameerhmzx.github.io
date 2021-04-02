@@ -21,3 +21,33 @@
         fill: white;
     }
 }
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: white;
+    }
+
+    #animated-logo {
+        fill: white;
+        stroke: black;
+    }
+
+    @keyframes strokeFill {
+        0% {
+            stroke: black;
+        }
+    
+        40% {
+            stroke: white;
+        }
+    
+        41% {
+            stroke: none;
+        }
+    
+        100% {
+            stroke: none;
+            fill: black;
+        }
+    }
+}

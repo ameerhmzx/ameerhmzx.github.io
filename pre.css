@@ -17,24 +17,20 @@ body {
     stroke: white;
     stroke-dasharray: 400;
     stroke-dashoffset: 400;
-    /* animation: strokeLogo 2s ease-in-out forwards; */
     animation: strokeLogo 4s ease-in infinite;
 }
 
-/* 
+
 @media (prefers-color-scheme: light) {
     body {
         background-color: white;
     }
 
-    .logo > .outline {
-        fill: black;
-    }
-
-    .logo > .fill {
+    #animated-logo {
         fill: white;
+        stroke: black;
     }
-} */
+}
 
 @keyframes strokeLogo {
     0% {
