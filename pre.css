@@ -15,9 +15,9 @@ body {
 #animated-logo {
     fill: black;
     stroke: white;
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: strokeLogo 4s ease-in infinite;
+    stroke-dasharray: 500;
+    stroke-dashoffset: 500;
+    animation: strokeLogo 3s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 
 
@@ -34,7 +34,7 @@ body {
 
 @keyframes strokeLogo {
     0% {
-        stroke-dashoffset: 400;
+        stroke-dashoffset: 500;
     }
 
     50% {
@@ -42,7 +42,7 @@ body {
     }
 
     100% {
-        stroke-dashoffset: -400;
+        stroke-dashoffset: -500;
     }
 }
 
