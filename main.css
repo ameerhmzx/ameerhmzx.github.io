@@ -1,15 +1,23 @@
 #animated-logo {
     fill: black;
-    animation: strokeFill 1s ease-in forwards !important;
+    animation:  strokeLogo 4s ease-in forwards, strokeFill 1s ease-in forwards !important;
 }
 
 @keyframes strokeFill {
     0% {
+        stroke: white;
+    }
+
+    40% {
         stroke: black;
     }
 
+    41% {
+        stroke: none;
+    }
+
     100% {
+        stroke: none;
         fill: white;
-        stroke: black;
     }
 }
