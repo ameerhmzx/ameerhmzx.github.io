@@ -5,18 +5,15 @@
 @keyframes strokeFill {
     0% {
         stroke: var(--secondary-color);
+        stroke-dasharray: 0;
+        stroke-dashoffset: 0;
     }
 
     50% {
         stroke: var(--primary-color);
     }
 
-    51% {
-        stroke: none;
-    }
-
     100% {
-        stroke: none;
         fill: var(--secondary-color);
     }
 }
