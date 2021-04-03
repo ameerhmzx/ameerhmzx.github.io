@@ -1,15 +1,17 @@
-var initialTime = (new Date()).getTime();
+function loadPage() {
+    animationDuration = 3000;
+    logo = document.getElementById('animated-logo');
+    PrefixedEvent(logo, "animationiteration", ()=>{
+        setTimeout(()=>{ logo.classList = "animate-fill";}, animationDuration/2);
+       
+    });
+}
 
-window.addEventListener("load", () => {
-    delay = 3000;
-    loadingTime = (new Date()).getTime() - initialTime;
-    (loadingTime > delay) ?
-        loadcss() :
-        setTimeout(loadcss, delay - loadingTime);
-});
 
-
-function loadcss() {
-    var link = document.getElementById('maincss');
-    link.media = "screen,print";
+var pfx = ["webkit", "moz", "MS", "o", ""];
+function PrefixedEvent(element, type, callback) {
+	for (var p = 0; p < pfx.length; p++) {
+		if (!pfx[p]) type = type.toLowerCase();
+		element.addEventListener(pfx[p]+type, callback, false);
+	}
 }

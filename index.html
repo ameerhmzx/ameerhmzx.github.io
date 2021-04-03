@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AmeerHmzX</title>
     <link rel="stylesheet" href="pre.css">
-    <link id="maincss" rel="stylesheet" href="main.css" media="none">
+    <link id="maincss" rel="stylesheet" href="main.css" media="none" onload="if(media!='all')media='all'; loadPage();">
     <noscript>
         <link id="maincss" rel="stylesheet" href="main.css">
+        <style>
+            #animated-logo {
+                animation: strokeFill 1s ease-in forwards !important;
+            }
+        </style>
     </noscript>
     <script src="app.js"></script>
 </head>
