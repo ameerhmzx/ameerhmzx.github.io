@@ -1,11 +1,14 @@
+var animated = false;
 function loadPage() {
     animationDuration = 3000;
     logo = document.getElementById('animated-logo');
     PrefixedEvent(logo, "animationiteration", ()=>{
-        setTimeout(()=>{ logo.classList = "animate-fill";}, animationDuration/2);
-       
+        setTimeout(()=>{ logo.classList = "animate-fill"; animated=true;}, animationDuration/2);
     });
 }
+
+// fallBack
+setTimeout(()=>{ if(!animated){logo.classList = "animate-fill"; animated=true;} }, 6000);
 
 
 var pfx = ["webkit", "moz", "MS", "o", ""];
