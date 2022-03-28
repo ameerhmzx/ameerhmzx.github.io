@@ -5,11 +5,11 @@ import Preloader from '../components/preloader';
 
 
 export default function MyApp({Component, pageProps}: AppProps): JSX.Element {
-    return (
-        <BaseLayout>
-            <Preloader>
-                <Component {...pageProps} />
-            </Preloader>
-        </BaseLayout>
-    )
+  return (
+    <BaseLayout>
+      <Preloader>
+        <Component {...pageProps} />
+      </Preloader>
+    </BaseLayout>
+  )
 }

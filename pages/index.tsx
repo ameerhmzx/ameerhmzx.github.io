@@ -136,7 +136,7 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
           <p onClick={() => {
             let keys = Object.keys(sections);
             let next: any = keys.at(1);
-            if(next)
+            if (next)
               sections[next].ref?.current.scrollIntoView({behavior: 'smooth'})
           }}
              className={'flex-1 text-left flex items-center text-gray-400 hover:text-black dark:hover:text-white duration-300 cursor-pointer'}>Scroll
