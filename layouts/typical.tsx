@@ -41,14 +41,13 @@ export default function TypicalLayout({child}: PropsWithChildren<any>) {
           <div
             className={'flex-1 divide-x divide-gray-200 dark:divide-gray-800 flex items-center justify-center sm:justify-end'}>
             {Object.keys(sections).map((key) => (
-              <div>
-                <div
-                  onClick={() => {
-                    sections[key].ref.current?.scrollIntoView({behavior: "smooth"})
-                  }}
-                  className={'link select-none text-sm cursor-pointer py-2 px-3 text-black dark:text-white'}>
-                  {sections[key]['title']}
-                </div>
+              <div
+                key={key}
+                onClick={() => {
+                  sections[key].ref.current?.scrollIntoView({behavior: "smooth"})
+                }}
+                className={'link select-none text-sm cursor-pointer py-2 px-3 text-black dark:text-white'}>
+                {sections[key]['title']}
               </div>
             ))}
           </div>

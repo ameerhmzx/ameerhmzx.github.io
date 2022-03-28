@@ -8,11 +8,11 @@ export default function Home(): JSX.Element {
     <TypicalLayout child={(heights: any, sections: any) => {
       return (
         <>
-          <Section key={'about'} section={sections['about']} heights={heights}>
+          <Section section={sections['about']} heights={heights}>
             <HeroSection heights={heights} sections={sections}/>
           </Section>
 
-          <Section key={'portfolio'} section={sections['portfolio']} heights={heights}>
+          <Section section={sections['portfolio']} heights={heights}>
             <div className={'pt-4 self-start justify-start font-heading text-2xl text-start'}>Portfolio
             </div>
             <div className={'flex flex-1 justify-center items-center'}>
@@ -20,7 +20,7 @@ export default function Home(): JSX.Element {
             </div>
           </Section>
 
-          <Section key={'contact'} section={sections['contact']} heights={heights} showDivider={false}>
+          <Section section={sections['contact']} heights={heights} showDivider={false}>
             <div className={'pt-4 font-heading text-2xl text-start'}>Contact</div>
             <div className={'flex flex-1 justify-center items-center'}>
               <div><a className={'underline'}
@@ -35,7 +35,6 @@ export default function Home(): JSX.Element {
 }
 
 function Section({
-                   key,
                    section,
                    heights,
                    children,
@@ -44,7 +43,7 @@ function Section({
                  }: PropsWithChildren<any>): JSX.Element {
   return (
     <>
-      <div key={key} ref={section['ref']}
+      <div ref={section['ref']}
            style={{paddingTop: heights.header, minHeight: heights.vp}}
            className={'flex flex-col mx-auto container px-4 ' + className}>
         {children}
@@ -108,7 +107,7 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
         <span/>
         <div className={'flex-1 py-16 flex flex-wrap md:items-center justify-center mx-auto max-w-4xl min-w-xl'}>
           <div className={'flex-1 flex flex-col items-center justify-end md:justify-center'}>
-            <Logo className={'w-32 sm:w-48 h-auto animate-stroke-walk stroke-white dark:stroke-black'}/>
+            <Logo className={'w-32 sm:w-48 h-auto animate-stroke-walk stroke-current'}/>
             <div className={'flex flex-col'}>
               <p className={'font-heading text-md sm:text-2xl mt-2 whitespace-nowrap'}>Ameer Hamza
                 Naveed</p>

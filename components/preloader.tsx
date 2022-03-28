@@ -32,9 +32,9 @@ export default function Preloader({children}: PropsWithChildren<any>) {
         leaveFrom="opacity-100"
         leaveTo="opacity-0"
       >
-        <div className={'w-screen h-screen text-white bg-white dark:bg-black flex items-center justify-center'}>
+        <div className={'w-screen h-screen bg-white dark:bg-black flex items-center justify-center'}>
           <Logo
-            className={(isLoading ? 'animate-stroke-fill stroke-black dark:stroke-white' : 'logo-transparent') + ' w-20 sm:w-32 h-auto'}/>
+            className={(isLoading ? 'animate-stroke-fill stroke-current' : 'logo-transparent') + ' w-20 sm:w-32 h-auto'}/>
         </div>
       </Transition>
       {!isLoading && children}
