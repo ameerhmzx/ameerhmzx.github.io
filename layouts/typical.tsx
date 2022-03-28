@@ -2,15 +2,14 @@ import type {PropsWithChildren} from "react";
 import {useEffect, useRef, useState} from "react";
 
 export default function TypicalLayout({child}: PropsWithChildren<any>) {
-
     const header: any = useRef();
     const footer: any = useRef();
 
-    const [heights, setHeights] = useState({header: 0, footer: 0, vp: 0});
-    const [sections] = useState({
-        "about": {title: "About", "ref": useRef()},
-        "portfolio": {title: "Portfolio", "ref": useRef()},
-        "contact": {title: "Contact", "ref": useRef()},
+    const [heights, setHeights]: any = useState({header: 0, footer: 0, vp: 0});
+    const [sections]: any = useState({
+        'about': {title: "About", ref: useRef()},
+        'portfolio': {title: "Portfolio", ref: useRef()},
+        'contact': {title: "Contact", ref: useRef()},
     });
 
     useEffect(() => {
@@ -37,12 +36,12 @@ export default function TypicalLayout({child}: PropsWithChildren<any>) {
                 <div
                     className={'py-2 px-2 sm:px-8 divide-x divide-gray-200 dark:divide-gray-800 flex items-center justify-center sm:justify-end'}>
                     {Object.keys(sections).map((key) => (
-                        <div className={'sm:px-4'}>
+                        <div>
                             <div
                                 onClick={() => {
-                                    sections[key]['ref'].current?.scrollIntoView({behavior: "smooth"})
+                                    sections[key].ref.current?.scrollIntoView({behavior: "smooth"})
                                 }}
-                                className={'select-none px-4 text-sm cursor-pointer py-2 text-black dark:text-white hover:underline duration-300'}>
+                                className={'link select-none text-sm cursor-pointer py-2 px-3 text-black dark:text-white'}>
                                 {sections[key]['title']}
                             </div>
                         </div>

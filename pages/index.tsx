@@ -5,15 +5,16 @@ import {PropsWithChildren} from "react";
 
 export default function Home(): JSX.Element {
     return (
-        <TypicalLayout child={(heights, sections) => {
+        <TypicalLayout child={(heights: any, sections: any) => {
             return (
                 <>
-                    <Section key={'about'} section={sections['about']} heights={heights} showDivider={false}>
+                    <Section key={'about'} section={sections['about']} heights={heights}>
                         <HeroSection heights={heights} sections={sections}/>
                     </Section>
 
                     <Section key={'portfolio'} section={sections['portfolio']} heights={heights}>
-                        <div className={'pt-4 self-start justify-start font-heading text-2xl text-start'}>Portfolio</div>
+                        <div className={'pt-4 self-start justify-start font-heading text-2xl text-start'}>Portfolio
+                        </div>
                         <div className={'flex flex-1 justify-center items-center'}>
                             <div>Still Under Construction 🥱</div>
                         </div>
@@ -22,7 +23,9 @@ export default function Home(): JSX.Element {
                     <Section key={'contact'} section={sections['contact']} heights={heights} showDivider={false}>
                         <div className={'pt-4 font-heading text-2xl text-start'}>Contact</div>
                         <div className={'flex flex-1 justify-center items-center'}>
-                            <div><a className={'underline'} href={'mailto://ameerhmzx@gmail.com'}>ameerhmzx@gmail.com</a> 😝</div>
+                            <div><a className={'underline'}
+                                    href={'mailto://ameerhmzx@gmail.com'}>ameerhmzx@gmail.com</a> 😝
+                            </div>
                         </div>
                     </Section>
                 </>
@@ -54,14 +57,14 @@ function Section({
     );
 }
 
-function HeroSection({heights, sections}): JSX.Element {
+function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
     return (
         <>
             <div
-                className={'h-full pt-4 flex flex-col justify-between container mx-auto px-4'}
+                className={'flex-1 h-full pt-4 flex flex-col justify-center container mx-auto px-4'}
                 style={{minHeight: heights.vp - heights.header}}>
                 <span/>
-                <div className={'flex flex-wrap items-center justify-center mx-auto max-w-4xl min-w-xl'}>
+                <div className={'flex-1 flex flex-wrap items-center justify-center mx-auto max-w-4xl min-w-xl'}>
                     <div className={'flex-1 flex flex-col items-center justify-center'}>
                         <Logo className={'w-32 sm:w-48 h-auto'}/>
                         <div className={'flex flex-col'}>
@@ -82,7 +85,7 @@ function HeroSection({heights, sections}): JSX.Element {
                         </p>
                         <div className={'flex justify-center md:justify-start'}>
                             <button
-                                onClick={() => sections['contact']['ref'].current?.scrollIntoView({behavior: 'smooth'})}
+                                onClick={() => sections['contact'].ref?.current.scrollIntoView({behavior: 'smooth'})}
                                 className={'btn mt-6'}>
                                 Contact Me
                             </button>
@@ -130,7 +133,7 @@ function HeroSection({heights, sections}): JSX.Element {
                         </a>
                     </div>
                     <div className={'hidden sm:block h-10 border-r border-black dark:border-white'}/>
-                    <p onClick={() => sections['portfolio']['ref'].current?.scrollIntoView({behavior: 'smooth'})}
+                    <p onClick={() => sections['portfolio'].ref?.current.scrollIntoView({behavior: 'smooth'})}
                        className={'flex-1 text-left flex items-center text-gray-400 hover:text-black dark:hover:text-white duration-300 cursor-pointer'}>Scroll
                         for details
                         <ChevronDoubleDownIcon className={'w-3 ml-1 h-auto'}/>
