@@ -14,49 +14,43 @@ module.exports = {
             },
             animation: {
                 'stroke-fill': 'strokeLogo 3s cubic-bezier(0.65, 0, 0.35, 1) infinite',
-                'stroke-fill-dark': 'strokeLogoDark 3s cubic-bezier(0.65, 0, 0.35, 1) infinite',
+                'stroke-walk': 'strokeWalk 30s linear infinite'
             },
             keyframes: {
                 strokeLogo: {
                     '0%': {
                         strokeDashoffset: 500,
                         strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'black'
+                        fill: 'transparent'
                     },
                     '50%': {
                         strokeDashoffset: 0,
                         strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'black',
+                        fill: 'transparent'
                     },
                     '100%': {
                         strokeDashoffset: -500,
                         strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'black',
+                        fill: 'transparent'
                     },
                 },
-                strokeLogoDark: {
+                strokeWalk: {
                     '0%': {
-                        strokeDashoffset: 500,
-                        strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'white'
+                        strokeDashoffset: 400,
+                        strokeDasharray: 400,
+                        strokeWidth: 2
                     },
                     '50%': {
                         strokeDashoffset: 0,
-                        strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'white',
+                        strokeDasharray: 400,
+                        strokeWidth: 2
                     },
                     '100%': {
-                        strokeDashoffset: -500,
-                        strokeDasharray: 500,
-                        fill: 'transparent',
-                        stroke: 'white',
+                        strokeDashoffset: -400,
+                        strokeDasharray: 400,
+                        strokeWidth: 2
                     },
-                }
+                },
             }
         },
     },

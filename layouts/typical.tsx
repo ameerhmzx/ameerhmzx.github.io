@@ -32,7 +32,7 @@ export default function TypicalLayout({child}: PropsWithChildren<any>) {
         <>
             <div
                 ref={header}
-                className={'w-full fixed top-0 bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 backdrop-filter backdrop-blur-md border-b border-gray-200 dark:border-gray-800'}>
+                className={'w-full z-30 fixed top-0 bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 backdrop-filter backdrop-blur-md border-b border-gray-200 dark:border-gray-800'}>
                 <div
                     className={'py-2 px-2 sm:px-8 divide-x divide-gray-200 dark:divide-gray-800 flex items-center justify-center sm:justify-end'}>
                     {Object.keys(sections).map((key) => (

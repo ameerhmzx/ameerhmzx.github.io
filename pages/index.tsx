@@ -66,7 +66,7 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
                 <span/>
                 <div className={'flex-1 flex flex-wrap items-center justify-center mx-auto max-w-4xl min-w-xl'}>
                     <div className={'flex-1 flex flex-col items-center justify-center'}>
-                        <Logo className={'w-32 sm:w-48 h-auto'}/>
+                        <Logo className={'w-32 sm:w-48 h-auto animate-stroke-walk stroke-white dark:stroke-black'}/>
                         <div className={'flex flex-col'}>
                             <p className={'font-heading text-md sm:text-2xl mt-2 whitespace-nowrap'}>Ameer Hamza
                                 Naveed</p>
