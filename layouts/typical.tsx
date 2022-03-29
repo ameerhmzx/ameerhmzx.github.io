@@ -39,7 +39,7 @@ export default function TypicalLayout({child}: PropsWithChildren<any>) {
             <Logo className={'w-auto h-12 py-1'}/>
           </div>
           <div
-            className={'flex-1 divide-x divide-gray-200 dark:divide-gray-800 flex items-center justify-center sm:justify-end'}>
+            className={'flex-1 flex items-center justify-center sm:justify-end'}>
             {Object.keys(sections).map((key) => (
               <div
                 key={key}
