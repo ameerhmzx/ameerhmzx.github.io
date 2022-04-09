@@ -1,4 +1,6 @@
-export default function JetbrainsLogo({className}) {
+import {PropsWithoutRef} from "react";
+
+export default function JetbrainsLogo({className}: PropsWithoutRef<{ className: string }>): JSX.IntrinsicElements['svg'] {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} viewBox="0 0 105 105" fill="currentColor">
       <path d="m22.5 22.5h60v60h-60z"/>

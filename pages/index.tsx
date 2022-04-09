@@ -44,7 +44,7 @@ const technologies = [
   },
   {
     title: 'JetBrains IDE',
-    description: 'Batteries included IDE\'s, I personally use them for python, java, golang & web development.',
+    description: "Batteries included IDEs, I personally use them for python, java, golang & web development.",
     icon: JetbrainsLogo,
     class: 'text-black dark:text-white'
   }

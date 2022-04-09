@@ -1,7 +1,7 @@
 import Head from "next/head";
 import {PropsWithChildren} from "react";
 
-export default function BaseLayout({children}: PropsWithChildren<any>) {
+export default function BaseLayout({children}: PropsWithChildren<{}>) {
   return (
     <>
       <Head>

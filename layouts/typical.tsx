@@ -1,8 +1,8 @@
-import type {PropsWithChildren} from "react";
+import type {PropsWithoutRef} from "react";
 import {useEffect, useRef, useState} from "react";
 import Logo from "../components/logo";
 
-export default function TypicalLayout({child}: PropsWithChildren<any>) {
+export default function TypicalLayout({child}: PropsWithoutRef<{child: Function}>) {
   const header: any = useRef();
   const footer: any = useRef();
 

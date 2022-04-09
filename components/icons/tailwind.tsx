@@ -1,4 +1,6 @@
-export default function TailwindIcon({className}) {
+import {PropsWithoutRef} from "react";
+
+export default function TailwindIcon({className}: PropsWithoutRef<{ className: string }>): JSX.IntrinsicElements['svg'] {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className}
          width="44" height="44" viewBox="0 0 24 24" fill="currentColor">

@@ -1,4 +1,6 @@
-export default function ReactJsIcon({className}) {
+import {PropsWithoutRef} from "react";
+
+export default function ReactJsIcon({className}: PropsWithoutRef<{ className: string }>): JSX.IntrinsicElements['svg'] {
   return (
     <svg className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
       <path fill="none" d="M0 0h24v24H0z"/>

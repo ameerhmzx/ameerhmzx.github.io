@@ -1,4 +1,6 @@
-export default function LinuxIcon({className}) {
+import {PropsWithoutRef} from "react";
+
+export default function LinuxIcon({className}: PropsWithoutRef<{ className: string }>): JSX.IntrinsicElements['svg'] {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" className={className} fill="currentColor" viewBox="0 0 24 24">
       <path

@@ -3,7 +3,7 @@ import {PropsWithChildren, useEffect, useState} from "react";
 import {Transition} from "@headlessui/react";
 import {Router} from "next/router";
 
-export default function Preloader({children}: PropsWithChildren<any>) {
+export default function Preloader({children}: PropsWithChildren<{}>) {
   const [isLoading, setIsLoading] = useState(true);
   const minimumLoaderDuration = 500;
 

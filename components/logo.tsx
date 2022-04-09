@@ -1,6 +1,6 @@
 import type {PropsWithChildren} from "react";
 
-export default function Logo({className}: PropsWithChildren<any>) {
+export default function Logo({className}: PropsWithChildren<{ className: string }>) {
   return (
     <svg className={className} viewBox="0 0 150 150" fill="currentColor">
       <path fillRule="evenodd" clipRule="evenodd"
