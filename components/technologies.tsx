@@ -4,7 +4,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function Technologies({technologies}: PropsWithoutRef<{ technologies: [{ title: string; icon: any; class: string; description: string }] }>) {
+export default function Technologies({technologies}: PropsWithoutRef<{ technologies: { title: string; icon: any; class: string; description: string }[] }>) {
   return (
     <div
       className="rounded-lg p-6 border border-gray-200 dark:border-gray-800
