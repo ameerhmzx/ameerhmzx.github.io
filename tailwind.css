@@ -37,9 +37,25 @@ html {
     @apply text-black;
 }
 
+p {
+    @apply text-gray-600;
+}
+
+.emphasis-strong{
+    @apply text-black !important;
+}
+
 @media (prefers-color-scheme: dark) {
     html {
         @apply text-white;
+    }
+
+    p {
+        @apply text-gray-300;
+    }
+
+    .emphasis-strong{
+        @apply text-white !important;
     }
 
     .btn {

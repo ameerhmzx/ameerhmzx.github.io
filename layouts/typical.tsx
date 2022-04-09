@@ -9,7 +9,7 @@ export default function TypicalLayout({child}: PropsWithChildren<any>) {
   const [heights, setHeights]: any = useState({header: 0, footer: 0, vp: 0});
   const [sections]: any = useState({
     'about': {title: "About", ref: useRef()},
-    'portfolio': {title: "Portfolio", ref: useRef()},
+    'tools': {title: "My Tools", ref: useRef()},
     'contact': {title: "Contact", ref: useRef()},
   });
 

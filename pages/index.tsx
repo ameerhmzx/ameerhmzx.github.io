@@ -2,6 +2,53 @@ import TypicalLayout from "../layouts/typical";
 import Logo from "../components/logo";
 import {ChevronDoubleDownIcon} from "@heroicons/react/solid";
 import {PropsWithChildren} from "react";
+import Technologies from "../components/technologies";
+import ReactJsIcon from "../components/icons/reactjs";
+import TailwindIcon from "../components/icons/tailwind";
+import DockerIcon from "../components/icons/docker";
+import GithubIcon from "../components/icons/github";
+import LinuxIcon from "../components/icons/linux";
+import JetbrainsLogo from "../components/icons/jetbrains";
+
+
+const technologies = [
+  {
+    title: 'React JS',
+    description: 'My goto option for frontend development, I majorly use NextJS to kick start the project without any hustle.',
+    icon: ReactJsIcon,
+    class: 'dark:text-sky-400 text-sky-500'
+  },
+  {
+    title: 'Tailwind CSS',
+    description: 'I love the way tailwind reduces the time to write beautiful websites without compromising on control over the basis.',
+    icon: TailwindIcon,
+    class: 'dark:text-sky-400 text-sky-500'
+  },
+  {
+    title: 'Docker',
+    description: 'I always containerize the applications in development while working in a team to avoid "Works on my Machine" issues.',
+    icon: DockerIcon,
+    class: 'dark:text-blue-400 text-blue-500'
+  },
+  {
+    title: 'Github',
+    description: 'I personally use github as version control and github actions as CI/CD to ensure quick and secure deployment.',
+    icon: GithubIcon,
+    class: 'text-black dark:text-white'
+  },
+  {
+    title: 'Linux',
+    description: 'From cloud to personal computer I prefer linux for its customizations, security and obviously open source nature.',
+    icon: LinuxIcon,
+    class: 'text-black dark:text-white'
+  },
+  {
+    title: 'JetBrains IDE',
+    description: 'Batteries included IDE\'s, I personally use them for python, java, golang & web development.',
+    icon: JetbrainsLogo,
+    class: 'text-black dark:text-white'
+  }
+]
 
 export default function Home(): JSX.Element {
   return (
@@ -12,19 +59,28 @@ export default function Home(): JSX.Element {
             <HeroSection heights={heights} sections={sections}/>
           </Section>
 
-          <Section section={sections['portfolio']} heights={heights}>
-            <div className={'pt-4 self-start justify-start font-heading text-2xl text-start'}>Portfolio
+          <Section section={sections['tools']} heights={heights} className={'justify-center'}>
+            <div
+              className={'pt-8 self-start justify-start font-heading text-2xl text-start'}>
+              Tools & Technologies
             </div>
-            <div className={'flex flex-1 justify-center items-center'}>
-              <div>Still Under Construction 🥱</div>
+            <div className={'flex flex-col'}>
+              <p className={'pt-4 max-w-xl text-justify'}>
+                I like to experience new technologies. I have done multiple projects using a range of tools, languages &
+                frameworks but some of my preferred and frequently used are listed below.
+              </p>
+
+              <div className={'my-16 self-center'}>
+                <Technologies technologies={technologies}/>
+              </div>
             </div>
           </Section>
 
           <Section section={sections['contact']} heights={heights} showDivider={false}>
-            <div className={'pt-4 font-heading text-2xl text-start'}>Contact</div>
+            <div className={'pt-8 font-heading text-2xl text-start'}>Contact Me</div>
             <div className={'flex flex-1 justify-center items-center'}>
-              <div><a className={'underline'}
-                      href={'mailto://ameerhmzx@gmail.com'}>ameerhmzx@gmail.com</a> 😝
+              <div>
+                <a className={'underline'} href={'mailto://ameerhmzx@gmail.com'}>ameerhmzx@gmail.com</a> 😝
               </div>
             </div>
           </Section>
@@ -47,11 +103,11 @@ function Section({
            style={{paddingTop: heights.header, minHeight: heights.vp}}
            className={'flex flex-col mx-auto container px-4 ' + className}>
         {children}
-        {
-          showDivider && <div
-                className={'mx-auto border-t border-dashed border-gray-400 dark:border-gray-700 max-w-xl w-full'}/>
-        }
       </div>
+      {
+        showDivider && <div
+              className={'mx-auto border-t border-dashed border-gray-400 dark:border-gray-700 max-w-xl w-full'}/>
+      }
     </>
   );
 }
@@ -109,20 +165,18 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
           <div className={'flex-1 flex flex-col items-center justify-end md:justify-center'}>
             <Logo className={'w-32 sm:w-48 h-auto animate-stroke-walk stroke-current'}/>
             <div className={'flex flex-col'}>
-              <p className={'font-heading text-md sm:text-2xl mt-2 whitespace-nowrap'}>Ameer Hamza
+              <p className={'font-heading emphasis-strong text-md sm:text-2xl mt-2 whitespace-nowrap'}>Ameer Hamza
                 Naveed</p>
               <p className={'text-xs -mt-1 font-thin self-end whitespace-nowrap'}>@AmeerHmzX</p>
             </div>
           </div>
           <div className={'md:flex-1'}>
             <p className={'text-sm sm:text-base text-justify mt-8 md:mt-0'}>
-              A privacy pragmatist and a computer enthusiast with problem solving skills doing freelancing
-              as
-              a web developer.
+              A privacy pragmatist and a computer enthusiast with problem-solving skills doing freelancing
+              as a web developer.
               Always interested in exploring new technologies,
-              especially <abbr className={'cursor-pointer'}
-                               title={'Free and open source'}>FOSS</abbr> projects.
-              Fascinated by linux and devOps automations.
+              especially <abbr className={'cursor-pointer'} title={'Free and open source'}>FOSS</abbr> projects.
+              Fascinated by Linux and DevOps automation.
             </p>
             <div className={'flex justify-center md:justify-start'}>
               <button
