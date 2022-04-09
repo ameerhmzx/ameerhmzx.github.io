@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logo-transparent {
+    fill: transparent;
+    stroke: transparent;
+}
+
+.link {
+    @apply mr-3;
+}
+
+.link::before {
+    content: '#';
+    @apply w-3 opacity-0 inline-block translate-x-3 text-gray-400 transition-all duration-300;
+}
+
+.link:hover::before {
+    @apply opacity-100 translate-x-0;
+}
+
+.btn {
+    @apply w-fit bg-black ring-black ring-offset-2 ring-offset-white
+    cursor-pointer duration-300 text-white px-4 py-2 select-none;
+}
+
+.btn:hover {
+    @apply scale-90 ring-2;
+}
+
+.btn:focus {
+    @apply scale-90 ring-2;
+}
+
+html {
+    @apply text-black;
+}
+
+p {
+    @apply text-gray-600;
+}
+
+.emphasis-strong{
+    @apply text-black !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        @apply text-white;
+    }
+
+    p {
+        @apply text-gray-300;
+    }
+
+    .emphasis-strong{
+        @apply text-white !important;
+    }
+
+    .btn {
+        @apply bg-white ring-white text-black ring-offset-black;
+    }
+}
