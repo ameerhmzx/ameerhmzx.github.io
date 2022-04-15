@@ -70,7 +70,7 @@ export default function Home(): JSX.Element {
                 frameworks but some of my preferred and frequently used are listed below.
               </p>
 
-              <div className={'my-16 self-center'}>
+              <div className={'my-16 self-center xl:-mx-24'}>
                 <Technologies technologies={technologies}/>
               </div>
             </div>
@@ -101,7 +101,7 @@ function Section({
     <>
       <div ref={section['ref']}
            style={{paddingTop: heights.header, minHeight: heights.vp}}
-           className={'flex flex-col mx-auto container px-4 ' + className}>
+           className={'flex flex-col mx-auto x_container px-4 ' + className}>
         {children}
       </div>
       {
@@ -190,7 +190,7 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
 
         <div
           className={'w-full mt-4 py-4 flex flex-col sm:flex-row items-center justify-center space-x-4 text-xs sm:text-sm'}>
-          <SocialLinks className={'flex-1 flex justify-end text-gray-400'}/>
+          <SocialLinks className={'flex-1 flex justify-end text-gray-500'}/>
           <div className={'hidden sm:block h-10 border-r border-black dark:border-white'}/>
           <p onClick={() => {
             let keys = Object.keys(sections);
@@ -198,7 +198,7 @@ function HeroSection({heights, sections}: PropsWithChildren<any>): JSX.Element {
             if (next)
               sections[next].ref?.current.scrollIntoView({behavior: 'smooth'})
           }}
-             className={'flex-1 text-left flex items-center text-gray-400 hover:text-black dark:hover:text-white duration-300 cursor-pointer'}>Scroll
+             className={'flex-1 text-left flex items-center text-gray-500 hover:text-black dark:hover:text-white duration-300 cursor-pointer'}>Scroll
             for details
             <ChevronDoubleDownIcon className={'w-3 ml-1 h-auto'}/>
           </p>

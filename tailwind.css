@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply bg-white;
+}
+
 .logo-transparent {
     fill: transparent;
     stroke: transparent;
@@ -18,6 +22,10 @@
 
 .link:hover::before {
     @apply opacity-100 translate-x-0;
+}
+
+.x_container {
+    @apply container lg:max-w-5xl;
 }
 
 .btn {
@@ -41,7 +49,7 @@ p {
     @apply text-gray-600;
 }
 
-.emphasis-strong{
+.emphasis-strong {
     @apply text-black !important;
 }
 
@@ -50,11 +58,15 @@ p {
         @apply text-white;
     }
 
+    body {
+        @apply bg-black;
+    }
+
     p {
         @apply text-gray-300;
     }
 
-    .emphasis-strong{
+    .emphasis-strong {
         @apply text-white !important;
     }
 

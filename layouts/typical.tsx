@@ -34,7 +34,7 @@ export default function TypicalLayout({child}: PropsWithoutRef<{child: Function}
       <div
         ref={header}
         className={'w-full z-30 fixed top-0 bg-white dark:bg-black bg-opacity-60 dark:bg-opacity-60 backdrop-filter backdrop-blur-md border-b border-gray-200 dark:border-gray-800'}>
-        <div className={'flex items-center container mx-auto py-2 sm:px-8'}>
+        <div className={'flex items-center x_container mx-auto py-2 sm:px-8'}>
           <div className={'hidden sm:block'}>
             <Logo className={'w-auto h-12 py-1'}/>
           </div>
