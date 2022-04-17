@@ -58,7 +58,7 @@ export default function ContactForm() {
         </div>
         <div className="lg:py-0 py-8 px-4 sm:px-6 md:col-span-3">
           <div className="max-w-lg mx-auto md:max-w-none">
-            <form action="https://formsubmit.co/ameerhmzx@gmail.com" method="POST"
+            <form action="https://formsubmit.co/6455e385e74b2e0cdfac57d66943ea9b" method="POST"
                   className="grid grid-cols-1 gap-y-6">
               <div>
                 <label htmlFor="full-name" className="sr-only">
