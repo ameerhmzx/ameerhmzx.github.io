@@ -60,7 +60,8 @@ export default function TypicalLayout({child}: PropsWithoutRef<{child: Function}
         {child(heights, sections)}
       </div>
 
-      <div ref={footer} className={'-z-20 fixed bottom-0 left-0 right-0 w-full bg-black'}/>
+      <div ref={footer} className={'-z-20 fixed bottom-0 left-0 right-0 w-full bg-black'}>
+      </div>
     </>
   )
 }
