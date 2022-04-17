@@ -53,7 +53,7 @@ export default function Technologies() {
     <div
       className="w-full bg-gray-100 dark:bg-gray-900 xl:px-16 px-12 rounded-lg py-12 border border-gray-200 dark:border-gray-800 overflow-hidden shadow">
       <div
-        className="sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-12 x_container">
+        className="sm:grid sm:grid-cols-2 lg:grid-cols-3 space-y-12 sm:space-y-0 gap-12 x_container">
         {technologies && technologies.map((item) => (
           <div
             key={item.title}>

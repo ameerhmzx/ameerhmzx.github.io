@@ -83,7 +83,7 @@ p {
     }
 
     .input {
-        @apply bg-black border-gray-700 rounded-md;
+        @apply bg-black border-gray-600 rounded-md;
     }
 
     .input:focus {

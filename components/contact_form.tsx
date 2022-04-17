@@ -40,15 +40,19 @@ export default function ContactForm() {
             <p className={'py-4 text-justify'}>
               Anything I can help you with? Feel free to contact.
             </p>
-            <dl className="py-4 text-base text-gray-600">
+            <dl className="py-4 text-base text-gray-600 dark:text-gray-500">
 
               {contact_details && contact_details.map((item, i) => (
                 <div key={i} className="mt-4 group max-w-min cursor-pointer">
                   <dt className="sr-only">{item.type}</dt>
                   <dd className="flex items-center max-w-min">
-                    <item.icon className="flex-shrink-0 h-auto w-5 text-gray-500 group-hover:text-gray-900 duration-300"
-                               aria-hidden="true"/>
-                    <a href={item.link} className="ml-3 group-hover:text-black duration-300">{item.text}</a>
+                    <item.icon
+                      className="flex-shrink-0 h-auto w-5 text-gray-500 group-hover:text-gray-900 dark:group-hover:text-white duration-300"
+                      aria-hidden="true"/>
+                    <a href={item.link}
+                       className="ml-3 group-hover:text-black dark:group-hover:text-white duration-300">
+                      {item.text}
+                    </a>
                   </dd>
                 </div>
               ))}
@@ -114,7 +118,7 @@ export default function ContactForm() {
                   defaultValue={''}
                 />
               </div>
-              <div>
+              <div className="flex justify-center md:justify-start">
                 <button
                   type="submit"
                   className="btn"
