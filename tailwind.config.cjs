@@ -22,9 +22,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        "sans": ["MonaSans, sans-serif", {
-          fontVariationSettings: "\"wdth\" 120",
-        }],
+        "display": ["Calluna Black", "sans-serif"],
+        "sans": ["Plus Jakarta Sans, sans-serif"],
       },
     },
   }, plugins: [require("@tailwindcss/typography")],
