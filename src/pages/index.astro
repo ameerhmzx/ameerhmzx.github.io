@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <main
+    class="grid min-h-full grid-cols-1 lg:grid-cols-2 mx-auto container px-12 py-16 gap-8">
+    <section class="place-self-center flex flex-col prose dark:prose-invert">
+      <h1>Hi! 👋</h1>
+      <div>
+        <h2 class="m-0">I am <span class="gradient-animate bg-clip-text text-transparent">Ameer Hamza Naveed</span>
+        </h2>
+        <p>@ameerhmzx</p>
+      </div>
+      <p>
+        A passionate software engineer. thriving on tackling intricate challenges, particularly in the realms of system
+        architecture.
+      </p>
+      <p>
+        With a deep-rooted love for cutting-edge technologies, constantly exploring and implementing innovative
+        solutions in the world of web development.
+      </p>
+      <div class="mt-8">
+        <a href="https://www.linkedin.com/in/ameerhmzx"
+           target="_blank"
+           class="dark:bg-white bg-black px-6 py-3 rounded-md dark:text-black text-white no-underline">Let's Connect</a>
+      </div>
+    </section>
+    <div
+      class="place-self-center -order-1 lg:order-none max-w-sm lg:max-w-md rounded-full overflow-hidden gradient-animate dark:border-black/40 border-white/60 bg-clip-border border-2 shadow-xl shadow-gray-600/40">
+      <img
+        loading="eager"
+        class="dark:bg-gray-900 bg-gray-100 w-full h-full object-contain object-bottom duration-[1s]"
+        src="/avatar.png" />
+    </div>
+  </main>
+</Layout>
