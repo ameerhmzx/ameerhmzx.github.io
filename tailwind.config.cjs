@@ -22,7 +22,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        "display": ["Calluna Black", "sans-serif"],
+        "display": ["Blender Pro", "sans-serif"],
         "sans": ["Plus Jakarta Sans, sans-serif"],
       },
     },
