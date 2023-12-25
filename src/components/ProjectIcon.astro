@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  icon: string | object;
+}
+
+const { icon } = Astro.props;
+
+const isImg = typeof icon === "object";
+let svg;
+if (!isImg && typeof icon === "string") svg = icon.replace(/\.svg$/, "");
+---
+
+<span
+  transition:name={`icon-${icon}`}
+  class="inline-block h-9 shrink-0 w-9 p-1.5 overflow-hidden object-contain rounded-full bg-slate-100 dark:bg-slate-800 ring-1 ring-slate-300 dark:ring-slate-600">
+  {isImg ?
+    (
+      <Image class="m-0" src={icon} alt="project logo" />
+    ) : (
+      <Icon icon={svg} />
+    )
+  }
+</span>

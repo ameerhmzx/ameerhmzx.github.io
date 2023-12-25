@@ -1,0 +1,17 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  url: string;
+  text: string;
+  icon: string;
+}
+
+const { url, text, icon } = Astro.props;
+---
+
+<a href={url} target="_blank"
+   class="inline-flex link gap-1 items-center flex-nowrap whitespace-nowrap text-sm text-inherit py-1">
+  <Icon icon={icon} />
+  {text}
+  <slot />
+</a>

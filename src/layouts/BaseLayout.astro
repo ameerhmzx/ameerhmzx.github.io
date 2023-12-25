@@ -1,0 +1,52 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="bg-white dark:bg-gray-950">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="A personal website showcasing the interest in world of software development" />
+  <meta name="viewport" content="width=device-width" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <title>{title} | Ameer Hamza Naveed</title>
+  <ViewTransitions fallback="swap" />
+</head>
+<body
+  class="overflow-x-hidden prose dark:prose-invert prose-slate max-w-none group/body">
+<main class="min-h-[100dvh] min-w-[100dvw]">
+  <slot />
+</main>
+<Footer />
+</body>
+</html>
+
+<style is:global>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+    @font-face {
+        font-family: 'Blender Pro';
+        src: url('/fonts/Blender-Pro-Heavy.ttf') format('truetype');
+    }
+
+    .gradient-animate {
+        @apply bg-gradient-to-br animate-gradient-xy dark:from-indigo-500 from-indigo-300 dark:via-purple-200 via-purple-500 to-sky-500 dark:to-sky-400;
+    }
+
+    a.link {
+        @apply relative underline-offset-2 hover:underline-offset-4 duration-300 mr-5;
+    }
+
+    a.link:after {
+        content: url('/images/arrow.svg');
+        @apply absolute h-4 w-auto aspect-square filter dark:invert -right-2 hover:-right-4 scale-[10%] hover:scale-[70%] duration-300 opacity-0 hover:opacity-80 hover:-rotate-[25deg];
+    }
+</style>

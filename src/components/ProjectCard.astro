@@ -1,0 +1,41 @@
+---
+import { CollectionEntry } from "astro:content";
+import ProjectIcon from "./ProjectIcon.astro";
+import { Image } from "astro:assets";
+import { clsx } from "clsx";
+import TechChip from "./TechChip.astro";
+import DateChip from "./DateChip.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+---
+
+<a transition:name={`card-${project.slug}`}
+   class="@container group/card m-0 group no-underline grow"
+   href={`/projects/${project.slug}`}>
+  <div
+    class={
+      clsx("w-full h-full flex flex-col @3xl:flex-row gap-6 border dark:border-slate-800 px-6 py-6 rounded-xl",
+        "group-hover:dark:border-slate-500 group-hover:border-slate-400 duration-100")
+    }>
+    <Image
+      transition:name={`image-${project.slug}`}
+      src={project.data.image}
+      alt={project.data.title}
+      class="@3xl:group-even:order-2 bg-white @3xl:w-1/2 h-auto aspect-video object-cover text-gray-800 font-medium rounded-md border border-gray-200 dark:border-gray-800 !my-0" />
+    <div class="flex flex-col h-full gap-4">
+      <h2
+        class="inline-flex m-0 items-center gap-2 group-hover:underline underline-offset-4">
+        <ProjectIcon icon={project.data.icon} />
+        <span transition:name={`title-${project.slug}`}>{project.data.title}</span>
+      </h2>
+      <p transition:name={`desc-${project.slug}`}
+         class="text-sm m-0 no-underline">{project.data.description}
+      </p>
+      <DateChip className="mt-auto" startDate={project.data.startDate} endDate={project.data.endDate} />
+    </div>
+  </div>
+</a>

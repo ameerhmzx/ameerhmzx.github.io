@@ -1,0 +1,24 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "@components/ProjectCard.astro";
+
+const projectEntries = await getCollection("projects", ({ data }) =>
+  import.meta.env.PROD ? data.draft !== true : true,
+);
+
+projectEntries.sort((a, b) => b.data.startDate - a.data.startDate);
+---
+
+<BaseLayout title="Projects">
+  <article class="w-full prose dark:prose-invert mx-auto max-w-6xl py-16 px-12">
+    <h1 transition:name="projects-heading" class="inline-flex items-center">
+      Projects
+    </h1>
+    <div class="grid sm:grid-cols-2 mt-4 gap-4">
+      {projectEntries.map((project) => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </article>
+</BaseLayout>

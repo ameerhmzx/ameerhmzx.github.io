@@ -1,0 +1,91 @@
+---
+import { getCollection, CollectionEntry, getEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ProjectIcon from "@components/ProjectIcon.astro";
+import { Image } from "astro:assets";
+import IconLink from "../../components/IconLink.astro";
+import getDefaultLinkIcon from "../../utils/getDefaultLinkIcon";
+import CaptionedFigure from "../../components/CaptionedFigure.astro";
+import TechChip from "../../components/TechChip.astro";
+import DateChip from "../../components/DateChip.astro";
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const projectEntries = await getCollection("projects", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  return projectEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"projects">;
+}
+
+// 2. For your template, you can get the entry directly from the prop
+const { entry } = Astro.props;
+const slug = Astro.params.slug;
+const { Content } = await entry.render();
+
+const data = entry.data;
+
+const { icon, image, title, description, position } = data;
+const technologies = data.technologies || [];
+
+const links = data.links || [];
+
+const positionEntry: CollectionEntry<"position"> = position ? await getEntry(position) : undefined;
+---
+<BaseLayout title={title}>
+  <article
+    class="relative prose dark:prose-invert max-w-4xl px-12 mx-auto py-16 overflow-x-clip">
+    <span class="flex items-center w-full gap-3 sticky z-40 top-0 py-2">
+      <ProjectIcon icon={icon} />
+      <div class="flex flex-col">
+        <h2 transition:name={`title-${slug}`} class="m-0">
+            {title}
+        </h2>
+        {positionEntry && <p class="text-sm opacity-60 m-0 -mt-1">@{positionEntry?.data.title}</p>}
+      </div>
+      <DateChip
+        className="hidden sm:block ml-auto"
+        startDate={data.startDate}
+        endDate={data.endDate}
+      />
+      <span
+        class="absolute inset-0 -z-10 -inset-x-20 backdrop-blur-lg bg-gradient-to-t from-white/50 dark:from-slate-950/50 dark:to-slate-950 to-white to-95%" />
+    </span>
+    <div class="space-y-6">
+      <p transition:name={`desc-${slug}`}>{description}</p>
+
+      <DateChip className="ml-auto sm:hidden" startDate={data.startDate} endDate={data.endDate} />
+
+      <div class="flex flex-wrap items-center gap-2">
+        {technologies.map((tech) => (
+          <TechChip tech={tech} slug={slug} />
+        ))}
+      </div>
+
+      {links &&
+        <div class="flex flex-col items-start">
+          {links.map((link) => (
+            <IconLink
+              icon={getDefaultLinkIcon(link.type)}
+              url={link.url}
+              text={link.type}
+            />
+          ))}
+        </div>}
+    </div>
+    <hr />
+    <CaptionedFigure caption={title}>
+      <Image
+        transition:name={`image-${slug}`}
+        src={image}
+        alt={title} />
+    </CaptionedFigure>
+    <Content />
+  </article>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { clsx } from "clsx";
+interface Props {
+  className?: string;
+  caption?: string;
+}
+
+const { className, caption } = Astro.props;
+---
+
+<figure class={clsx(className, "text-center figure")}>
+  <slot />
+  <figcaption class="text-sm text-gray-500 mt-2">
+    {caption}
+  </figcaption>
+</figure>
+
+<style is:global>
+    figure > :first-child {
+        @apply bg-white w-full h-auto mx-auto text-gray-800 font-medium rounded-md border border-gray-200 dark:border-gray-800 my-0 !important;
+    }
+</style>

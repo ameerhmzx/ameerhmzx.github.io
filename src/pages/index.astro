@@ -1,38 +1,44 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "@layouts/BaseLayout.astro";
+import Hero from "@components/Hero.astro";
+import SectionHeading from "@components/SectionHeading.astro";
+import Button from "@components/Button.astro";
+import Icon from "@components/Icon.astro";
+
+import { getCollection } from "astro:content";
+import ProjectCard from "@components/ProjectCard.astro";
+
+const featuredProjectSlugs = [
+  "rashcam", "advertizers",
+];
+
+const featuredProjects = await getCollection("projects", ({ data, slug }) => {
+  return (import.meta.env.PROD ? data.draft !== true : true) && featuredProjectSlugs.includes(slug);
+});
+featuredProjects.sort((a, b) => b.data.startDate - a.data.startDate);
 ---
 
-<Layout title="About">
-  <main
-    class="grid min-h-full grid-cols-1 lg:grid-cols-2 mx-auto container px-12 py-16 gap-8">
-    <section class="place-self-center flex flex-col prose dark:prose-invert">
-      <h4 class="m-0">Hi There, I'm</h4>
-      <div>
-        <h1 class="m-0 text-3xl md:text-4xl"><span
-          class="gradient-animate bg-clip-text text-transparent font-display">Ameer Hamza Naveed</span>
-        </h1>
-        <span class="text-sm font-mono bg-gray-200 dark:bg-gray-700 rounded-md px-2 py-1">@ameerhmzx</span>
-      </div>
-      <p>
-        A passionate software engineer. thriving on tackling intricate challenges, particularly in the realms of system
-        architecture.
-      </p>
-      <p>
-        With a deep-rooted love for cutting-edge technologies, constantly exploring and implementing innovative
-        solutions in the world of web development.
-      </p>
-      <div class="mt-8">
-        <a href="https://www.linkedin.com/in/ameerhmzx"
-           target="_blank"
-           class="dark:bg-white bg-black px-6 py-3 rounded-md dark:text-black text-white no-underline">Let's Connect</a>
-      </div>
-    </section>
-    <div
-      class="place-self-center -order-1 lg:order-none max-w-xs lg:max-w-md rounded-full overflow-hidden gradient-animate dark:border-black/40 border-white/60 bg-clip-border border-2 shadow-xl shadow-gray-600/40">
-      <img
-        loading="eager"
-        class="dark:bg-gray-900 bg-gray-100 w-full h-full object-contain object-bottom duration-[1s]"
-        src="/avatar.png" />
+<Layout title="Home">
+  <Hero />
+  <section id="projects" class="mx-auto container max-w-6xl flex flex-col gap-12 px-12 py-8">
+    <SectionHeading name="projects-heading">
+      Projects
+    </SectionHeading>
+    <div class="grid sm:grid-cols-1 max-w-5xl w-full self-center mt-4 gap-4">
+      {featuredProjects.map((project) => (
+        <ProjectCard project={project} />
+      ))}
     </div>
-  </main>
+    <div class="flex justify-center flex-wrap-reverse gap-4 items-center">
+      <Button variant="text" href="/projects">
+        View all projects
+        <Icon slot="end-icon" icon="code" />
+      </Button>
+    </div>
+  </section>
+  <!--<section id="work" class="min-h-[100dvh] mx-auto container py-6">-->
+  <!--  <SectionHeading>-->
+  <!--    Work-->
+  <!--  </SectionHeading>-->
+  <!--</section>-->
 </Layout>
