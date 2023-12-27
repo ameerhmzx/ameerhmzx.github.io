@@ -38,7 +38,7 @@ const links = data.links || [];
 
 const positionEntry: CollectionEntry<"position"> = position ? await getEntry(position) : undefined;
 ---
-<BaseLayout title={title}>
+<BaseLayout title={title} description={description}>
   <article
     class="relative prose dark:prose-invert max-w-4xl mx-auto px-8 py-8 sm:px-12 sm:py-16 overflow-x-clip">
     <span class="flex items-center w-full gap-3 sticky z-40 top-0 py-2">

@@ -18,7 +18,7 @@ const featuredProjects = await getCollection("projects", ({ data, slug }) => {
 featuredProjects.sort((a, b) => b.data.startDate - a.data.startDate);
 ---
 
-<Layout title="Home">
+<Layout title="Home" description="A personal website showcasing the interest in world of software development">
   <Hero />
   <section id="projects" class="mx-auto container max-w-6xl flex flex-col gap-12 px-8 py-8 sm:px-12">
     <SectionHeading name="projects-heading">
