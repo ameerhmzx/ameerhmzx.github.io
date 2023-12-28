@@ -21,7 +21,7 @@ const featuredProjects = await getCollection("projects", ({ data, slug }) => {
 });
 featuredProjects.sort((a, b) => b.data.startDate - a.data.startDate);
 
-const workExperience = (await getCollection("work")).toSorted((a, b) => b.data.startDate - a.data.startDate);
+const workExperience = (await getCollection("work")).sort((a, b) => b.data.startDate - a.data.startDate);
 ---
 
 <Layout title="Home" description="A personal website showcasing the interest in world of software development">
