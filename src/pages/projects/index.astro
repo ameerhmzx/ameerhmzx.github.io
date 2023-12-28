@@ -17,7 +17,7 @@ projectEntries.sort((a, b) => b.data.startDate - a.data.startDate);
     </h1>
     <div class="grid sm:grid-cols-2 mt-4 gap-4">
       {projectEntries.map((project) => (
-        <ProjectCard project={project} />
+        <ProjectCard showTransition project={project} />
       ))}
     </div>
   </article>

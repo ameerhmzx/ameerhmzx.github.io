@@ -6,8 +6,8 @@ description: "The Advertizers is a digital marketing agency that specializes in 
 They offer a wide range of services, including SEO, social media marketing, and web design."
 location: Lahore, Pakistan
 role: Full Stack Developer
-startDate: 2020-10-01
-endDate: 2022-08-01
+startDate: 2020-09-01
+endDate: 2022-08-15
 ---
 
 - Spearheaded the development and delivery of over 10 projects, using diverse web tech.

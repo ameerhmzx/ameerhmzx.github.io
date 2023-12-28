@@ -1,0 +1,57 @@
+---
+import { CollectionEntry } from "astro:content";
+import ProjectIcon from "./ProjectIcon.astro";
+import { clsx } from "clsx";
+import Icon from "./Icon.astro";
+interface props {
+  experience: CollectionEntry<"work">;
+}
+
+const { experience } = Astro.props;
+const { icon, title, description, location, role } = experience.data;
+const slug = experience.slug;
+
+function calculateDuration(startDate: Date, endDate?: Date): string {
+  const start = startDate;
+  const end = endDate || new Date();
+  const years = end.getFullYear() - start.getFullYear();
+  const months = end.getMonth() - start.getMonth();
+  const days = end.getDate() - start.getDate() + 1;
+
+  const totalDays = years * 365 + months * 30 + days;
+  const totalYears = totalDays / 365;
+  const totalMonths = totalDays / 30;
+
+  if (totalDays < 30) return `${totalDays.toFixed(0)} days`;
+  if (totalYears < 1) return `${(totalMonths).toFixed(1)} months`;
+  return `${totalYears.toFixed(1)} years`;
+}
+
+const duration = calculateDuration(experience.data.startDate, experience.data.endDate);
+---
+
+<a
+  href={`/experience/${slug}`}
+  class={
+    clsx(
+      "flex flex-col gap-2 border rounded-md",
+      "dark:border-gray-800 border-gray-200 hover:border-gray-300 dark:hover:border-gray-400",
+      "px-6 py-4 prose dark:prose-invert mb-4 group hover:shadow duration-200",
+    )
+  }>
+  <div class="flex flex-wrap items-center gap-4">
+    <ProjectIcon transitionName={`experience-icon-${slug}`} icon={icon} />
+    <div class="flex flex-col">
+      <h3 transition:name={`experience-${slug}`} class="m-0 group-hover:underline underline-offset-2">{title}</h3>
+      <p class="m-0 text-xs font-mono opacity-60 -mt-1">{role}</p>
+    </div>
+    <span class="ml-auto self-start text-xs opacity-60">
+      {duration}
+    </span>
+  </div>
+  <p class="text-sm line-clamp-5 sm:line-clamp-3">{description}</p>
+  <span class="flex items-center gap-1">
+          <Icon icon="pin" />
+    <p class="m-0 text-xs">{location}</p>
+  </span>
+</a>
