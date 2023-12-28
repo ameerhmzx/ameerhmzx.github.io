@@ -8,6 +8,6 @@ const { icon, className } = Astro.props as Props;
 const { default: innerHTML } = await import(`../icons/${icon}.svg?raw`);
 ---
 
-<span class={clsx("w-4 h-4 aspect-square fill-current", className)}>
+<span class={clsx("w-4 h-4 aspect-square fill-current flex items-center", className)}>
   <Fragment set:html={innerHTML} />
 </span>

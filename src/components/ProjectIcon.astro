@@ -4,9 +4,10 @@ import { Image } from "astro:assets";
 
 interface Props {
   icon: string | object;
+  transitionName?: string;
 }
 
-const { icon } = Astro.props;
+const { icon, transitionName } = Astro.props;
 
 const isImg = typeof icon === "object";
 let svg;
@@ -14,13 +15,13 @@ if (!isImg && typeof icon === "string") svg = icon.replace(/\.svg$/, "");
 ---
 
 <span
-  transition:name={`icon-${icon}`}
-  class="inline-block h-9 shrink-0 w-9 p-1.5 overflow-hidden object-contain rounded-full bg-gray-100 dark:bg-gray-800 ring-1 ring-gray-300 dark:ring-gray-600">
+  transition:name={transitionName ?? `icon-${icon}`}
+  class="inline-flex items-stretch justify-stretch h-9 shrink-0 w-9 p-1 overflow-hidden object-contain rounded-full bg-gray-100 dark:bg-gray-800 ring-1 ring-gray-300 dark:ring-gray-600">
   {isImg ?
     (
       <Image class="!m-0" src={icon} alt="project logo" />
     ) : (
-      <Icon icon={svg} />
+      <Icon className="!w-full !h-full" icon={svg} />
     )
   }
 </span>

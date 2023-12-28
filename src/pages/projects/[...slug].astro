@@ -8,6 +8,7 @@ import getDefaultLinkIcon from "../../utils/getDefaultLinkIcon";
 import CaptionedFigure from "../../components/CaptionedFigure.astro";
 import TechChip from "../../components/TechChip.astro";
 import DateChip from "../../components/DateChip.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -37,26 +38,30 @@ const technologies = data.technologies || [];
 const links = data.links || [];
 
 const positionEntry: CollectionEntry<"position"> = position ? await getEntry(position) : undefined;
+const isWork = positionEntry?.collection === "work";
 ---
 <BaseLayout title={title} description={description}>
   <article
     class="relative prose dark:prose-invert max-w-4xl mx-auto px-8 py-8 sm:px-12 sm:py-16 overflow-x-clip">
-    <span class="flex items-center w-full gap-3 sticky z-40 top-0 py-2">
-      <ProjectIcon icon={icon} />
+    <StickyHeader>
+      <ProjectIcon icon={icon} transitionName={`project-icon-${slug}`} />
       <div class="flex flex-col">
-        <h2 transition:name={`title-${slug}`} class="m-0">
-            {title}
-        </h2>
-        {positionEntry && <p class="text-xs opacity-60 m-0 -mt-1 font-mono">@{positionEntry?.data.title}</p>}
+        <h2 transition:name={`title-${slug}`} class="m-0">{title}</h2>
+        {positionEntry &&
+          <a
+            transition:name={`${isWork ? "experience" : "education"}-${positionEntry.slug}`}
+            href={`/${isWork ? "experience" : "education"}/${positionEntry.slug}/`}
+            class="text-xs opacity-60 m-0 -mt-0.5 font-mono">
+            @{positionEntry?.data.title}
+          </a>
+        }
       </div>
       <DateChip
         className="hidden sm:block ml-auto"
         startDate={data.startDate}
         endDate={data.endDate}
       />
-      <span
-        class="absolute inset-0 -z-10 -inset-x-20 backdrop-blur-lg bg-gradient-to-t from-white/50 dark:from-gray-950/50 dark:to-gray-950 to-white to-95%" />
-    </span>
+    </StickyHeader>
     <div class="space-y-6">
       <p>{description}</p>
 

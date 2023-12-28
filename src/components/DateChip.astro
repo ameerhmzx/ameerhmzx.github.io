@@ -12,7 +12,7 @@ const dateOptions: Intl.DateTimeFormatOptions = { year: "numeric", month: "short
 const dateRange = startDate && endDate
   ? `${startDate.toLocaleDateString("en-US", dateOptions)} - ${endDate.toLocaleDateString("en-US", dateOptions)}`
   : startDate
-    ? startDate.toLocaleDateString("en-US", dateOptions)
+    ? `${startDate.toLocaleDateString("en-US", dateOptions)} - Current`
     : endDate
       ? endDate.toLocaleDateString("en-US", dateOptions)
       : undefined;

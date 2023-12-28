@@ -41,8 +41,12 @@ const { title, description } = Astro.props;
         @apply bg-gradient-to-br animate-gradient-xy dark:from-indigo-500 from-indigo-300 dark:via-purple-200 via-purple-500 to-sky-500 dark:to-sky-400;
     }
 
+    a {
+        @apply underline-offset-2 hover:underline-offset-4 duration-300;
+    }
+
     a.link {
-        @apply relative underline-offset-2 hover:underline-offset-4 duration-300 mr-5;
+        @apply relative mr-5;
     }
 
     a.link:after {

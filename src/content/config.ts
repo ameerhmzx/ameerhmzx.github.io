@@ -26,29 +26,34 @@ const projects = defineCollection({
 });
 
 const education = defineCollection({
-  type: "data",
-  schema: z.object({
-    title: z.string(),
-    degree: z.string(),
-    icon: z.string(),
-    startDate: z.date(),
-    endDate: z.date().optional(),
-    description: z.string().optional(),
-    location: z.string(),
-  }),
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      degree: z.string(),
+      icon: image().or(z.string()),
+      startDate: z.date(),
+      endDate: z.date().optional(),
+      description: z.string().optional(),
+      location: z.string(),
+      url: z.string().url().optional(),
+    }),
 });
 
 const work = defineCollection({
-  type: "data",
-  schema: z.object({
-    title: z.string(),
-    icon: z.string(),
-    role: z.string(),
-    startDate: z.date(),
-    endDate: z.date().optional(),
-    description: z.string().optional(),
-    location: z.string(),
-  }),
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      icon: image().or(z.string()),
+      role: z.string(),
+      startDate: z.date(),
+      endDate: z.date().optional(),
+      description: z.string().optional(),
+      location: z.string(),
+      url: z.string().url().optional(),
+      technologies: z.array(z.string()).optional(),
+    }),
 });
 
 export const collections = {
