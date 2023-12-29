@@ -11,16 +11,18 @@ import { Image } from "astro:assets";
     section?.scrollIntoView({ behavior: "smooth" });
   }
 
-  window.handleScroll = function() {
+  handleScroll = function() {
     const scale = Math.max(0, (1 - (document.documentElement.scrollTop / window.innerHeight) * 2));
-    document.getElementById("scroll-down").style.scale = scale + "";
+    const scrollDown = document.getElementById("scroll-down");
+    if (scrollDown) scrollDown.style.scale = scale + "";
   };
 
-  window.addEventListener("scroll", window.handleScroll);
+  window.addEventListener("scroll", handleScroll);
 </script>
 
-<section class="circuit relative">
-  <div class="grid grid-cols-1 min-h-[100dvh] lg:grid-cols-2 px-12 py-16 gap-16 mx-auto max-w-6xl container">
+<section class="circuit relative !mt-0 border-b dark:border-gray-900 border-gray-50">
+  <div
+    class="grid grid-cols-1 min-h-[100dvh] lg:grid-cols-2 px-4 py-8 sm:px-12 sm:py-16 gap-16 mx-auto max-w-6xl container">
     <div class="place-self-center flex flex-col lg:text-justify prose prose-sm dark:prose-invert max-w-none">
       <h4 class="m-0">Hi There, I'm</h4>
       <div>

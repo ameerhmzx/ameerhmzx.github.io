@@ -1,49 +1,17 @@
 ---
 import Layout from "@layouts/BaseLayout.astro";
-import Hero from "@components/Hero.astro";
-import SectionHeading from "@components/SectionHeading.astro";
-import Button from "@components/Button.astro";
-import Icon from "@components/Icon.astro";
-
-import { getCollection } from "astro:content";
-import ProjectCard from "@components/ProjectCard.astro";
-import ExperienceTimeline from "@components/ExperienceTimeline/ExperienceTimeline.astro";
-
-const featuredProjectSlugs = [
-  "rashcam", "advertizers",
-];
-
-const featuredProjects = await getCollection("projects", ({ data, slug }) => {
-  return (import.meta.env.PROD ? data.draft !== true : true) && featuredProjectSlugs.includes(slug);
-});
-featuredProjects.sort((a, b) => b.data.startDate - a.data.startDate);
-
-const workExperience = (await getCollection("work")).sort((a, b) => b.data.startDate - a.data.startDate);
-const education = (await getCollection("education")).sort((a, b) => b.data.startDate - a.data.startDate);
+import HeroSection from "@components/HeroSection.astro";
+import RecommendationSection from "@components/RecommendationSection.astro";
+import ProjectSection from "@components/ProjectSection.astro";
+import ExperienceSection from "@components/ExperienceSection.astro";
 ---
 
-<Layout title="Home" description="A personal website showcasing the interest in world of software development">
-  <Hero />
-  <section id="projects" class="mx-auto container max-w-6xl flex flex-col gap-8 sm:gap-12 px-4 py-8 sm:px-12">
-    <SectionHeading name="projects-heading">
-      Projects
-    </SectionHeading>
-    <div class="grid sm:grid-cols-1 max-w-5xl w-full self-center mt-4 gap-4">
-      {featuredProjects.map((project) => (
-        <ProjectCard showTransition project={project} />
-      ))}
-    </div>
-    <div class="flex justify-center flex-wrap-reverse gap-4 items-center">
-      <Button variant="text" href="/projects">
-        View all projects
-        <Icon slot="end-icon" icon="code" />
-      </Button>
-    </div>
-  </section>
-  <section id="experience" class="mx-auto container max-w-6xl flex flex-col gap-8 sm:gap-12 px-4 py-8 sm:px-12">
-    <SectionHeading>
-      Experience
-    </SectionHeading>
-    <ExperienceTimeline work={workExperience} education={education} />
-  </section>
+<Layout
+  title="Home"
+  description="A personal website showcasing the interest in world of software development"
+  className="space-y-8">
+  <HeroSection />
+  <ProjectSection />
+  <ExperienceSection />
+  <!--<RecommendationSection />-->
 </Layout>

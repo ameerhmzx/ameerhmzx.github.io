@@ -3,12 +3,12 @@ import { clsx } from "clsx";
 const { name: transitionName } = Astro.props;
 ---
 
-<div class="flex w-full py-2 px-8 prose prose-sm dark:prose-invert max-w-none">
+<div class="flex w-full py-2 sm:px-0 prose prose-sm dark:prose-invert max-w-none">
   <h1
     transition:name={transitionName}
     class={
       clsx(
-        "before:content-['#'] before:text-gray-200 before:blur-[1.5px] before:duration-300 before:-z-10 before:absolute m-0",
+        "sm:before:content-['#'] before:text-gray-200 before:blur-[1.5px] before:duration-300 before:-z-10 before:absolute m-0",
         "hover:before:blur-none hover:before:text-gray-400 dark:before:text-gray-800 dark:hover:before:text-gray-600",
         "before:translate-y-0 before:-translate-x-7 before:scale-[1.5] hover:before:translate-y-0 hover:before:-translate-x-8 hover:before:scale-100",
       )

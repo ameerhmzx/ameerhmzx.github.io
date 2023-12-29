@@ -56,8 +56,22 @@ const work = defineCollection({
     }),
 });
 
+const recommendations = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      title: z.string(),
+      company: z.string(),
+      url: z.string().url(),
+      image: image(),
+      recommendation: z.string(),
+    }),
+});
+
 export const collections = {
-  projects,
+  recommendations,
   education,
+  projects,
   work,
 };

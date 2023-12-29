@@ -1,13 +1,15 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/Footer.astro";
+import { clsx } from "clsx";
 
 interface Props {
   title: string;
   description?: string;
+  className?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, className } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,7 +24,7 @@ const { title, description } = Astro.props;
   <ViewTransitions fallback="swap" />
 </head>
 <body class="overflow-x-hidden group/body">
-<main class="min-h-[100dvh] min-w-[100dvw] pb-16">
+<main class={clsx("min-h-[100dvh] min-w-[100dvw] pb-16", className)}>
   <slot />
 </main>
 <Footer />
