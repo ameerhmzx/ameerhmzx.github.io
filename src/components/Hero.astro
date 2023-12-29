@@ -6,15 +6,17 @@ import { Image } from "astro:assets";
 ---
 
 <script is:inline>
-  function scrollToProjects() {
-    const projectSection = document.getElementById("projects");
-    projectSection?.scrollIntoView({ behavior: "smooth" });
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function scrollToContact() {
-    const contactSection = document.getElementById("contact");
-    contactSection?.scrollIntoView({ behavior: "smooth" });
-  }
+  window.handleScroll = function() {
+    const scale = Math.max(0, (1 - (document.documentElement.scrollTop / window.innerHeight) * 2));
+    document.getElementById("scroll-down").style.scale = scale + "";
+  };
+
+  window.addEventListener("scroll", window.handleScroll);
 </script>
 
 <section class="circuit relative">
@@ -42,7 +44,7 @@ import { Image } from "astro:assets";
           <Icon slot="start-icon" icon="linkedin-solid" className="w-5 h-5" />
           Let's Connect
         </Button>
-        <Button variant="text" onclick="scrollToContact();">
+        <Button variant="text" onclick={`scrollToSection("contact");`}>
           #Contact
         </Button>
       </div>
@@ -59,8 +61,9 @@ import { Image } from "astro:assets";
     </div>
   </div>
   <span
+    id="scroll-down"
     class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex">
-    <Button onclick="scrollToProjects();" variant="text" className="animate-bounce text-xs italic">
+    <Button onclick={`scrollToSection("projects");`} variant="text" className="animate-bounce text-xs italic">
       <Icon slot="start-icon" icon="mouse" />
       Scroll Down
     </Button>
