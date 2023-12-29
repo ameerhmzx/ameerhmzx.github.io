@@ -5,7 +5,7 @@ url: https://prodago.com/
 location: Montreal, Canada
 role: Lead Software Engineer
 teamSize: 6 - 8
-startDate: 2022-06-15
+startDate: 2022-08-15
 description:
   "Prodago specializes in offering cutting-edge data and AI governance solutions.
   Our platform is designed to empower organizations in implementing effective governance frameworks.
