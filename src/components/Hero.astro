@@ -47,13 +47,15 @@ import { Image } from "astro:assets";
         </Button>
       </div>
     </div>
-    <div
-      class="place-self-center -order-1 lg:order-none max-w-xs lg:max-w-sm rounded-full overflow-hidden gradient-animate dark:border-black/40 border-white/60 bg-clip-border border-2 shadow-xl shadow-gray-600/40">
-      <Image
-        alt="Avatar"
-        loading="eager"
-        class="dark:bg-gray-900 bg-gray-100 w-full h-full object-contain object-bottom duration-[1s]"
-        src={avatarImage} />
+    <div class="avatar place-self-center -order-1 lg:order-none max-w-xs lg:max-w-sm rounded-full">
+      <div
+        class="overflow-hidden gradient-animate rounded-full dark:border-black/40 border-white/60 bg-clip-border border-2">
+        <Image
+          alt="Avatar"
+          loading="eager"
+          class="dark:bg-gray-900 bg-gray-100 w-full h-full object-contain object-bottom duration-[1s]"
+          src={avatarImage} />
+      </div>
     </div>
   </div>
   <span
@@ -81,5 +83,29 @@ import { Image } from "astro:assets";
         to {
             background-position: -100% 0%;
         }
+    }
+
+    .avatar {
+        --s: 4px; /* the spread */
+        --x: 0px; /* X offset */
+        --y: 16px; /* Y offset */
+        position: relative;
+        transform-style: preserve-3d;
+        z-index: 0;
+    }
+
+    .avatar::before {
+        content: "";
+        position: absolute;
+        z-index: -2;
+        inset: calc(-1 * var(--s));
+        background: linear-gradient(
+                172deg,
+                rgba(0, 0, 0, 0) 60%,
+                rgba(217, 35, 95, 0.5)
+        );
+        transform: translate3d(var(--x), var(--y), -1px);
+        border-radius: 100%;
+        filter: blur(10px);
     }
 </style>
