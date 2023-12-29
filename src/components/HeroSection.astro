@@ -12,9 +12,12 @@ import { Image } from "astro:assets";
   }
 
   handleScroll = function() {
-    const scale = Math.max(0, (1 - (document.documentElement.scrollTop / window.innerHeight) * 2));
+    const scrollTop = document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const percentScrolled = scrollTop / windowHeight;
+
     const scrollDown = document.getElementById("scroll-down");
-    if (scrollDown) scrollDown.style.scale = scale + "";
+    if (scrollDown) scrollDown.style.scale = (percentScrolled > 0.1 ? 0 : 1) + "";
   };
 
   window.addEventListener("scroll", handleScroll);
@@ -63,9 +66,12 @@ import { Image } from "astro:assets";
     </div>
   </div>
   <span
-    id="scroll-down"
     class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex">
-    <Button onclick={`scrollToSection("projects");`} variant="text" className="animate-bounce text-xs italic">
+    <Button
+      id="scroll-down"
+      variant="text"
+      onclick={`scrollToSection("projects");`}
+      className="animate-bounce text-xs italic duration-300">
       <Icon slot="start-icon" icon="mouse" />
       Scroll Down
     </Button>
