@@ -1,0 +1,30 @@
+---
+import { CollectionEntry } from "astro:content";
+import { clsx } from "clsx";
+import DateChip from "../DateChip.astro";
+
+interface Props {
+  experience: CollectionEntry<"work" | "education">;
+  isLast?: boolean;
+  isFirst?: boolean;
+}
+
+const { experience, isLast, isFirst } = Astro.props;
+const { startDate, endDate } = experience.data;
+---
+
+<>
+  <div class="sm:ml-auto sm:mt-6 sm:mb-6">
+    <DateChip startDate={startDate} endDate={endDate} />
+  </div>
+  <div class={
+    clsx(
+      "hidden sm:block relative w-2 bg-gray-200 dark:bg-gray-700",
+      isFirst && "rounded-t-full",
+      isLast && "rounded-b-full",
+    )
+  }>
+    <span class="absolute shadow-md bg-gray-500 top-6 -right-2 w-6 h-6 rounded-full" />
+  </div>
+  <slot />
+</>

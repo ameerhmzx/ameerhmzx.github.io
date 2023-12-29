@@ -36,7 +36,8 @@ const projects = await getCollection("projects", (projectEntry) => {
 ---
 
 <BaseLayout title={title} description={description ?? `Showcase of my work at ${title}`}>
-  <article class="relative prose dark:prose-invert max-w-4xl mx-auto px-8 py-8 sm:px-12 sm:py-16 overflow-x-clip">
+  <article
+    class="relative prose prose-sm dark:prose-invert max-w-4xl mx-auto px-4 py-8 sm:px-12 sm:py-16 overflow-x-clip">
     <StickyHeader>
       <ProjectIcon icon={icon} transitionName={`experience-icon-${slug}`} />
       <div class="flex flex-col">

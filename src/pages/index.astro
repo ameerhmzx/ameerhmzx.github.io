@@ -7,10 +7,7 @@ import Icon from "@components/Icon.astro";
 
 import { getCollection } from "astro:content";
 import ProjectCard from "@components/ProjectCard.astro";
-import DateChip from "../components/DateChip.astro";
-import ProjectIcon from "../components/ProjectIcon.astro";
-import { clsx } from "clsx";
-import ExperienceCard from "../components/ExperienceCard.astro";
+import ExperienceTimeline from "@components/ExperienceTimeline/ExperienceTimeline.astro";
 
 const featuredProjectSlugs = [
   "rashcam", "advertizers",
@@ -22,11 +19,12 @@ const featuredProjects = await getCollection("projects", ({ data, slug }) => {
 featuredProjects.sort((a, b) => b.data.startDate - a.data.startDate);
 
 const workExperience = (await getCollection("work")).sort((a, b) => b.data.startDate - a.data.startDate);
+const education = (await getCollection("education")).sort((a, b) => b.data.startDate - a.data.startDate);
 ---
 
 <Layout title="Home" description="A personal website showcasing the interest in world of software development">
   <Hero />
-  <section id="projects" class="mx-auto container max-w-6xl flex flex-col gap-12 px-8 py-8 sm:px-12">
+  <section id="projects" class="mx-auto container max-w-6xl flex flex-col gap-8 sm:gap-12 px-4 py-8 sm:px-12">
     <SectionHeading name="projects-heading">
       Projects
     </SectionHeading>
@@ -42,27 +40,10 @@ const workExperience = (await getCollection("work")).sort((a, b) => b.data.start
       </Button>
     </div>
   </section>
-  <section id="work" class="mx-auto container max-w-6xl flex flex-col gap-12 px-8 py-8 sm:px-12">
+  <section id="experience" class="mx-auto container max-w-6xl flex flex-col gap-8 sm:gap-12 px-4 py-8 sm:px-12">
     <SectionHeading>
-      Work
+      Experience
     </SectionHeading>
-    <div class="max-w-5xl w-full self-center mt-4 gap-x-4 grid sm:grid-cols-[auto_auto_1fr] gap-y-2 sm:gap-y-0">
-      {workExperience.map((work, i) => (
-        <>
-          <div class="sm:ml-auto sm:mt-6">
-            <DateChip startDate={work.data.startDate} endDate={work.data.endDate} />
-          </div>
-          <div class={
-            clsx(
-              "hidden sm:block relative w-2 bg-gray-200 dark:bg-gray-700",
-              i === 0 && "rounded-t-full",
-              i === workExperience.length - 1 && "rounded-b-full",
-            )
-          }>
-            <span class="absolute shadow-md bg-gray-500 top-6 -right-2 w-6 h-6 rounded-full" />
-          </div>
-          <ExperienceCard experience={work} />
-        </>))}
-    </div>
+    <ExperienceTimeline work={workExperience} education={education} />
   </section>
 </Layout>

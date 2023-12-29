@@ -19,7 +19,7 @@ const { project, showTransition } = Astro.props;
   href={`/projects/${project.slug}`}>
   <div
     class={
-      clsx("w-full h-full flex flex-col @3xl:flex-row gap-6 border dark:border-gray-800 px-6 py-6 rounded-xl",
+      clsx("w-full h-full flex flex-col @3xl:flex-row gap-3 sm:gap-6 border dark:border-gray-800 p-3 sm:p-6 rounded-md",
         "group-hover:dark:border-gray-700 group-hover:border-gray-300 duration-200 hover:shadow")
     }>
     <Image
@@ -27,14 +27,14 @@ const { project, showTransition } = Astro.props;
       src={project.data.image}
       alt={project.data.title}
       class="@3xl:group-even:order-2 bg-white @3xl:w-1/2 h-auto aspect-video object-cover text-gray-800 font-medium rounded-md border border-gray-200 dark:border-gray-800 !m-0" />
-    <div class="prose dark:prose-invert max-w-4xl flex flex-col h-full gap-4">
+    <div class="prose prose-sm dark:prose-invert max-w-4xl flex flex-col h-full gap-3 sm:gap-4">
       <h2
         class="inline-flex !m-0 items-center gap-2 group-hover:underline underline-offset-4">
         <ProjectIcon icon={project.data.icon} transitionName={showTransition && `project-icon-${project.slug}`} />
         <span transition:name={showTransition && `title-${project.slug}`}>{project.data.title}</span>
       </h2>
       <p transition:name={showTransition && `desc-${project.slug}`}
-         class="text-sm no-underline">{project.data.description}
+         class="text-sm no-underline m-0 opacity-75">{project.data.description}
       </p>
       <DateChip className="mt-auto" startDate={project.data.startDate} endDate={project.data.endDate} />
     </div>
