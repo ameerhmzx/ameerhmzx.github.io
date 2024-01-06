@@ -1,9 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import SectionLayout from "../layouts/SectionLayout.astro";
-import ExperienceCardRow from "./ExperienceTimeline/ExperienceCardRow.astro";
-import ExperienceCard from "./ExperienceTimeline/ExperienceCard.astro";
-import ExperienceHeadingRow from "./ExperienceTimeline/ExperienceHeadingRow.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
+import ExperienceCardRow from "../ExperienceTimeline/ExperienceCardRow.astro";
+import ExperienceCard from "../ExperienceTimeline/ExperienceCard.astro";
+import ExperienceHeadingRow from "../ExperienceTimeline/ExperienceHeadingRow.astro";
 
 const workExperience = (await getCollection("work")).sort((a, b) => b.data.startDate - a.data.startDate);
 const education = (await getCollection("education")).sort((a, b) => b.data.startDate - a.data.startDate);

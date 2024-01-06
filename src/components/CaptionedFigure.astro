@@ -18,5 +18,25 @@ const { className, caption } = Astro.props;
 <style is:global>
     figure > :first-child {
         @apply bg-white w-full h-auto mx-auto text-gray-800 font-medium rounded-md border border-gray-200 dark:border-gray-800 my-0 !important;
+        animation: RiseUp linear;
+        animation-timeline: view();
+        animation-range: 0 50vh;
+        transform-style: preserve-3d;
+        transform-origin: center center;
+    }
+
+    figure {
+        perspective: 100vw;
+    }
+
+    @keyframes RiseUp {
+        from {
+            transform: rotate3d(1, 0, 0, 45deg);
+            opacity: .4;
+        }
+        to {
+            transform: rotate3d(1, 0, 0, 0deg);
+            opacity: 1;
+        }
     }
 </style>

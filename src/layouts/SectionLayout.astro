@@ -4,7 +4,7 @@ import { clsx } from "clsx";
 
 interface Props {
   id: string;
-  title: string;
+  title?: string;
   secondary?: boolean;
 }
 
@@ -14,11 +14,13 @@ const { id, title, secondary } = Astro.props;
 <section
   id={id}
   class={clsx(
-    "last:border-none border-b dark:border-gray-900 border-gray-50",
+    "last:border-none border-b-2 dark:border-gray-900 border-gray-50",
     secondary && "bg-gray-50 dark:bg-gray-900",
   )}>
   <div class="mx-auto container max-w-6xl gap-4 flex flex-col px-4 py-8 sm:px-12">
-    <SectionHeading name={`${title}-heading`}>{title}</SectionHeading>
+    {title &&
+      <SectionHeading name={`${title}-heading`}>{title}</SectionHeading>
+    }
     <slot />
   </div>
 </section>
