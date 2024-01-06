@@ -15,7 +15,7 @@ const { startDate, endDate } = experience.data;
 
 <>
   <div class="sm:ml-auto sm:mt-6 sm:mb-6">
-    <DateChip startDate={startDate} endDate={endDate} />
+    <DateChip className="slide-up" startDate={startDate} endDate={endDate} />
   </div>
   <div class={
     clsx(
@@ -24,7 +24,7 @@ const { startDate, endDate } = experience.data;
       isLast && "rounded-b-full",
     )
   }>
-    <span class="absolute shadow-md bg-gray-500 top-7 -right-1.5 w-4 h-4 rounded-full" />
+    <span class="slide-up absolute shadow-md bg-gray-500 top-7 -right-1.5 w-4 h-4 rounded-full" />
   </div>
   <slot />
 </>

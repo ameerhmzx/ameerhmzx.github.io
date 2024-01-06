@@ -55,4 +55,21 @@ const { title, description, className } = Astro.props;
         content: url('/images/arrow.svg');
         @apply absolute h-4 w-auto aspect-square filter dark:invert -right-2 hover:-right-4 scale-[10%] hover:scale-[70%] duration-300 opacity-0 hover:opacity-80 hover:-rotate-[25deg];
     }
+
+    .slide-up {
+        animation: SlideUp forwards;
+        animation-timeline: view();
+        animation-range: 0vh 25vh
+    }
+
+    @keyframes SlideUp {
+        0% {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
 </style>

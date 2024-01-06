@@ -15,7 +15,7 @@ const { project, showTransition } = Astro.props;
 
 <a
   transition:name={showTransition && `card-${project.slug}`}
-  class="@container group/card group no-underline grow"
+  class="@container group/card group no-underline grow slide-up"
   href={`/projects/${project.slug}`}>
   <div
     class={

@@ -11,16 +11,16 @@ import { Image } from "astro:assets";
     section?.scrollIntoView({ behavior: "smooth" });
   }
 
-  handleScroll = function() {
-    const scrollTop = document.documentElement.scrollTop;
-    const windowHeight = window.innerHeight;
-    const percentScrolled = scrollTop / windowHeight;
-
-    const scrollDown = document.getElementById("scroll-down");
-    if (scrollDown) scrollDown.style.scale = (percentScrolled > 0.1 ? 0 : 1) + "";
-  };
-
-  window.addEventListener("scroll", handleScroll);
+  // handleScroll = function() {
+  //   const scrollTop = document.documentElement.scrollTop;
+  //   const windowHeight = window.innerHeight;
+  //   const percentScrolled = scrollTop / windowHeight;
+  //
+  //   const scrollDown = document.getElementById("scroll-down");
+  //   if (scrollDown) scrollDown.style.scale = (percentScrolled > 0.1 ? 0 : 1) + "";
+  // };
+  //
+  // window.addEventListener("scroll", handleScroll);
 </script>
 
 <section class="circuit relative !mt-0 border-b-2 dark:border-gray-900 border-gray-50">
@@ -66,12 +66,12 @@ import { Image } from "astro:assets";
     </div>
   </div>
   <span
-    class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex">
+    class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex animate-bounce">
     <Button
       id="scroll-down"
       variant="text"
       onclick={`scrollToSection("projects");`}
-      className="animate-bounce text-xs italic duration-300">
+      className="text-xs italic duration-300">
       <Icon slot="start-icon" icon="mouse" />
       Scroll Down
     </Button>
@@ -119,5 +119,22 @@ import { Image } from "astro:assets";
         transform: translate3d(var(--x), var(--y), -1px);
         border-radius: 100%;
         filter: blur(10px);
+    }
+
+    #scroll-down {
+        animation: ZoomOut linear forwards;
+        animation-timeline: view();
+        animation-range: 10vh 30vh;
+    }
+
+    @keyframes ZoomOut {
+        0% {
+            opacity: 1;
+            scale: 1;
+        }
+        100% {
+            opacity: 0;
+            scale: 0;
+        }
     }
 </style>
