@@ -2,34 +2,65 @@
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import SectionLayout from "../../layouts/SectionLayout.astro";
+import Icon from "../Icon.astro";
 
 const recommendations = await getCollection("recommendations");
+recommendations.sort((a, b) => {
+  return a.data.rank - b.data.rank;
+});
 ---
 
 <SectionLayout id="recommendations" title="Recommendations" secondary>
-  <ul class="mx-auto space-y-4">
-    {
-      recommendations.map(r => (
-        <li class="prose prose-sm dark:prose-invert max-w-3xl">
-          <a href={r.data.url} target="_blank" class="no-underline">
-            <cite class="inline-flex items-center mt-4 gap-2">
-              <Image
-                class="rounded-full w-12 h-12 m-0"
-                src={r.data.image}
-                alt={r.data.name}
-                width={100}
-                height={100} />
-              <div class="flex flex-col">
-                <span class="w-fit font-bold not-italic">{r.data.name}</span>
-                <span class="text-xs no-underline">{r.data.title} - @{r.data.company}</span>
-              </div>
-            </cite>
-          </a>
-          <blockquote>
-            {r.data.recommendation}
-          </blockquote>
-        </li>
-      ))
-    }
-  </ul>
+  <div class="flex items-center gap-4 self-end prose dark:prose-invert">
+    <button class="embla__prev disabled:opacity-30 duration-300">
+      <Icon icon="chevron-right"
+            className="!w-8 !h-8 rotate-180 bg-slate-200 dark:bg-slate-800 rounded-full"
+      />
+    </button>
+    <button class="embla__next disabled:opacity-30 duration-300">
+      <Icon icon="chevron-right"
+            className="!w-8 !h-8 bg-slate-200 dark:bg-slate-800 rounded-full"
+      />
+    </button>
+  </div>
+  <div class="embla overflow-hidden slide-up mx-auto max-w-full">
+    <ul
+      class="embla__container space-y-4 flex items-start gap-16 transition-[height] duration-300">
+      {
+        recommendations.map(r => (
+          <li
+            class="embla__slide prose max-w-none prose-sm dark:prose-invert flex-[0_0_100%] sm:flex-[0_0_80%] min-w-0 !m-0">
+            <a href={r.data.url} target="_blank" class="no-underline group">
+              <cite class="inline-flex items-center mt-4 gap-2">
+                <Image
+                  class="rounded-full w-12 h-12 m-0"
+                  src={r.data.image}
+                  alt={r.data.name}
+                  width={100}
+                  height={100} />
+                <div class="flex flex-col">
+                  <span
+                    class="w-fit font-bold not-italic group-hover:underline underline-offset-2 link">{r.data.name}</span>
+                  <span class="text-xs no-underline">{r.data.title} - @{r.data.company}</span>
+                </div>
+              </cite>
+            </a>
+            <blockquote>
+              {r.data.recommendation}
+            </blockquote>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </SectionLayout>
+
+<script>
+  import { initEmbla } from "../../utils/initEmbla";
+
+  const rootNode = <HTMLDivElement>document.querySelector(".embla");
+  const prevButtonNode = <HTMLButtonElement>document.querySelector(".embla__prev");
+  const nextButtonNode = <HTMLButtonElement>document.querySelector(".embla__next");
+
+  initEmbla(rootNode, prevButtonNode, nextButtonNode);
+</script>

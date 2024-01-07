@@ -47,13 +47,17 @@ const { title, description, className } = Astro.props;
         @apply underline-offset-2 hover:underline-offset-4 duration-300;
     }
 
-    a.link {
-        @apply relative mr-5;
+    .link {
+        @apply relative mr-5 inline-flex items-center;
     }
 
-    a.link:after {
+    .link:after {
         content: url('/images/arrow.svg');
-        @apply absolute h-4 w-auto aspect-square filter dark:invert -right-2 hover:-right-4 scale-[10%] hover:scale-[70%] duration-300 opacity-0 hover:opacity-80 hover:-rotate-[25deg];
+        @apply absolute h-4 w-auto aspect-square filter dark:invert  duration-300
+        -right-2 hover:-right-4 group-hover:-right-4
+        scale-[10%] hover:scale-[70%] group-hover:scale-[70%]
+        opacity-0 hover:opacity-80 group-hover:opacity-80
+        hover:-rotate-[25deg] group-hover:-rotate-[25deg];
     }
 
     .slide-up {

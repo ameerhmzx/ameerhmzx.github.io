@@ -66,6 +66,7 @@ const recommendations = defineCollection({
       url: z.string().url(),
       image: image(),
       recommendation: z.string(),
+      rank: z.number(),
     }),
 });
 
