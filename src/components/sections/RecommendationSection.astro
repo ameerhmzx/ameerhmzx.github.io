@@ -55,12 +55,73 @@ recommendations.sort((a, b) => {
   </div>
 </SectionLayout>
 
-<script>
-  import { initEmbla } from "../../utils/initEmbla";
+<script is:inline src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+<script is:inline src="https://unpkg.com/embla-carousel-auto-height/embla-carousel-auto-height.umd.js"></script>
+<script is:inline defer type="module">
+  let rootNode = document.querySelector(".embla");
+  let prevButtonNode = document.querySelector(".embla__prev");
+  let nextButtonNode = document.querySelector(".embla__next");
 
-  const rootNode = <HTMLDivElement>document.querySelector(".embla");
-  const prevButtonNode = <HTMLButtonElement>document.querySelector(".embla__prev");
-  const nextButtonNode = <HTMLButtonElement>document.querySelector(".embla__next");
+  function initEmbla(
+    root,
+    prevButton,
+    nextButton,
+  ) {
+    const emblaApi = EmblaCarousel(root, undefined, [EmblaCarouselAutoHeight()]);
+
+    const removeControlButtonClickHandlers = addControlButtonClickHandler(
+      emblaApi,
+      prevButton,
+      nextButton,
+    );
+
+    emblaApi.on("destroy", removeControlButtonClickHandlers);
+  }
+
+  function addControlButtonClickHandler(
+    emblaApi,
+    prevButton,
+    nextButton,
+  ) {
+    prevButton.addEventListener("click", () => emblaApi.scrollPrev(), false);
+    nextButton.addEventListener("click", () => emblaApi.scrollNext(), false);
+
+    const removeToggleControlButtonActive = addToggleControlButtonActive(
+      emblaApi,
+      prevButton,
+      nextButton,
+    );
+
+    return () => {
+      removeToggleControlButtonActive();
+      prevButton.removeEventListener("click", () => emblaApi.scrollPrev(), false);
+      nextButton.removeEventListener("click", () => emblaApi.scrollNext(), false);
+    };
+  }
+
+  const addToggleControlButtonActive = (
+    emblaApi,
+    prevButton,
+    nextButton,
+  ) => {
+    const toggleControlButtonState = () => {
+      if (emblaApi.canScrollPrev()) prevButton.removeAttribute("disabled");
+      else prevButton.setAttribute("disabled", "disabled");
+
+      if (emblaApi.canScrollNext()) nextButton.removeAttribute("disabled");
+      else nextButton.setAttribute("disabled", "disabled");
+    };
+
+    emblaApi
+      .on("select", toggleControlButtonState)
+      .on("init", toggleControlButtonState)
+      .on("reInit", toggleControlButtonState);
+
+    return () => {
+      prevButton.removeAttribute("disabled");
+      nextButton.removeAttribute("disabled");
+    };
+  };
 
   initEmbla(rootNode, prevButtonNode, nextButtonNode);
 </script>
