@@ -56,7 +56,7 @@ def parse_recommendation_from_li(li_el):
     except ValueError:
         return None
 
-    r_recommendation_el = li_el.find("ul", {"class": "pvs-list"}).find("ul", {"class": "pvs-list"})
+    r_recommendation_el = li_el.find("ul", {"class": "pvs-list"}).find("ul", {"class": "pvs-list"}).find("span", { "aria-hidden": "true" })
     if r_recommendation_el is None:
         return None
 
