@@ -31,7 +31,11 @@ const data = entry.data;
 const { icon, title, degree, description, technologies, url, location } = data;
 
 const projects = await getCollection("projects", (projectEntry) => {
-  return projectEntry.data.position.slug === slug;
+  const inDraft = projectEntry.data.draft ?? false;
+  const position = projectEntry.data.position ?? null;
+  if (inDraft || !position) return false;
+
+  return position.slug === slug;
 });
 ---
 

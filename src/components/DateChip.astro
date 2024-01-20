@@ -9,20 +9,21 @@ interface Props {
 const { startDate, endDate, className } = Astro.props;
 
 const dateOptions: Intl.DateTimeFormatOptions = { year: "numeric", month: "short" };
-const dateRange = startDate && endDate
-  ? `${startDate.toLocaleDateString("en-US", dateOptions)} - ${endDate.toLocaleDateString("en-US", dateOptions)}`
-  : startDate
-    ? `${startDate.toLocaleDateString("en-US", dateOptions)} - Current`
-    : endDate
-      ? endDate.toLocaleDateString("en-US", dateOptions)
-      : undefined;
+
+let value: string | number;
+
+let startStr = startDate?.toLocaleDateString("en-US", dateOptions);
+let endStr = endDate?.toLocaleDateString("en-US", dateOptions);
+
+value = startStr && endStr ? (startStr === endStr ? startStr : `${startStr} - ${endStr}`) : startStr ? `${startStr} - Current` : endStr;
 ---
 
+{ value && (
 <div class={
   clsx(
     "w-fit text-xs font-bold border border-gray-300 dark:border-gray-700 text-gray-500 rounded-full px-3 py-1 bg-gray-100/60 dark:bg-gray-900/60",
     className,
   )
 }>
-  {dateRange}
-</div>
+  {value}
+</div>)}

@@ -1,0 +1,72 @@
+---
+title: Hasura Auth Service
+image: "./hasura-jwt.png"
+icon: hasura.svg
+startDate: 2021-01-28
+endDate: 2021-01-28
+description: "It is a GoLang application which can work with Hasura to provide proper JWT based authentication.
+It uses PostgreSQL as database and Hasura GraphQL Engine for GraphQL API. It also uses Docker for easy deployment."
+technologies: ["GoLang", "Hasura", "PostgreSQL", "Docker"]
+links: [
+  {
+    type: "Github",
+    url: "https://github.com/ameerhmzx/hasura-jwt-auth"
+  },
+  {
+    type: "Hasura JWT Docs",
+    url: "https://hasura.io/docs/latest/auth/authentication/jwt/"
+  }
+]
+---
+import CaptionedFigure from "@components/CaptionedFigure.astro";
+import { Image } from "astro:assets";
+import HasuraAuthFlowImage from "./hasura-jwt-flow.png";
+import HasuraActionsFlowImage from "./hasura-actions-flow.png";
+
+## Motivation
+
+Hasura GraphQL Engine is a great tool to prototype your idea really fast without worrying about the backend.
+You can easily create a GraphQL API with Hasura and start building your frontend.
+
+But it doesn't have proper authentication system in place, it relies on external auth service. Which is a good thing,
+because you can use any auth service you want. But it also means you have to setup an auth service yourself.
+
+I wanted to use Hasura for my side projects, but I didn't want to setup an auth service everytime. So I created this
+simple JWT auth service for Hasura GraphQL Engine using GoLang.
+
+## How it works
+
+In simple terms, Hasura requires a JWT token with `X-Hasura-User_Id` and `X-Hasura-Role` claims in it. It will use
+these claims to authorize the user. as shown in the following diagram.
+
+<CaptionedFigure caption="Hasura JWT Auth Service Architecture">
+  <Image src={HasuraAuthFlowImage} alt="Hasura JWT Auth Service Architecture" />
+</CaptionedFigure>
+
+All we have to do is, create a JWT token with the required claims and send it to the client.
+To achieve this, we need to create an auth service which can do the following things.
+1. Register a new user
+2. Login a user and generate JWT token with required claims
+3. Refresh the JWT token
+
+Even though it is a straightforward process, and we can easily create a standalone auth service. But there is a prettier solution.
+As we are using Hasura, we can use Hasura Actions to create a custom GraphQL API. That will contact our auth service and do the required things.
+And the client won't have to worry about the auth service, it will just use the Hasura GraphQL API.
+
+<CaptionedFigure caption="Hasura Actions">
+  <Image src={HasuraActionsFlowImage} alt="Hasura Actions" />
+</CaptionedFigure>
+
+With all this in mind, I created a GoLang application using Mux router. It has 3 endpoints.
+1. `/register` - To register a new user
+2. `/login` - To login a user and generate JWT token
+3. `/refresh` - To refresh the JWT token
+
+This application is served as a Hasura Action. So we can use it as a GraphQL API.
+The application still needs to be deployed somewhere.
+So I used docker to create a container image and deployed it along with Hasura.
+
+## Conclusion
+
+This was a fun little project to work on. I learned a lot about Hasura Actions, GoLang and authentication methods.
+How JWT works in general and what are the best practices to follow while using JWT.

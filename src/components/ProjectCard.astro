@@ -27,7 +27,7 @@ const { project, showTransition } = Astro.props;
       src={project.data.image}
       alt={project.data.title}
       class="@3xl:group-even:order-2 bg-white @3xl:w-1/2 h-auto aspect-video object-cover text-gray-800 font-medium rounded-md border border-gray-200 dark:border-gray-800 !m-0" />
-    <div class="prose prose-sm dark:prose-invert max-w-4xl flex flex-col h-full gap-3 sm:gap-4">
+    <div class="prose prose-sm dark:prose-invert w-full flex flex-col h-full gap-3 sm:gap-4">
       <h2
         class="inline-flex !m-0 items-center gap-2 group-hover:underline underline-offset-4">
         <ProjectIcon icon={project.data.icon} transitionName={showTransition && `project-icon-${project.slug}`} />
