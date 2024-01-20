@@ -87,7 +87,7 @@ const { title, description, className } = Astro.props;
 />
 
 <script>
-  const track = () => umami.track();
+  const track = () => umami.track(props => ({ ...props, url: location.pathname }));
   document.removeEventListener("astro:after-swap", track);
   document.addEventListener("astro:after-swap", track);
 </script>
