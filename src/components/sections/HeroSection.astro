@@ -10,17 +10,6 @@ import { Image } from "astro:assets";
     const section = document.getElementById(sectionId);
     section?.scrollIntoView({ behavior: "smooth" });
   }
-
-  // handleScroll = function() {
-  //   const scrollTop = document.documentElement.scrollTop;
-  //   const windowHeight = window.innerHeight;
-  //   const percentScrolled = scrollTop / windowHeight;
-  //
-  //   const scrollDown = document.getElementById("scroll-down");
-  //   if (scrollDown) scrollDown.style.scale = (percentScrolled > 0.1 ? 0 : 1) + "";
-  // };
-  //
-  // window.addEventListener("scroll", handleScroll);
 </script>
 
 <section class="circuit relative !mt-0 border-b-2 dark:border-gray-900 border-gray-50">
@@ -45,11 +34,11 @@ import { Image } from "astro:assets";
         solutions.
       </p>
       <div class="mt-8 flex sm:flex-row flex-col gap-4">
-        <Button href="https://www.linkedin.com/in/ameerhmzx">
+        <Button data-umami-event="CTA button" href="https://www.linkedin.com/in/ameerhmzx">
           <Icon slot="start-icon" icon="linkedin-solid" className="w-5 h-5" />
           Let's Connect
         </Button>
-        <Button variant="text" onclick={`scrollToSection("contact");`}>
+        <Button data-umami-event="Contact button" variant="text" onclick={`scrollToSection("contact");`}>
           #Contact
         </Button>
       </div>
@@ -68,6 +57,7 @@ import { Image } from "astro:assets";
   <span
     class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex animate-bounce">
     <Button
+      data-umami-event="Scroll Down button"
       id="scroll-down"
       variant="text"
       onclick={`scrollToSection("projects");`}

@@ -77,3 +77,17 @@ const { title, description, className } = Astro.props;
         }
     }
 </style>
+
+<script
+  is:inline
+  async
+  src="http://stats.sx.ameerhmzx.com/script.js"
+  data-website-id="18a44ff1-f204-445d-a8ba-95826fd74095"
+  data-domains="ameerhmzx.com"
+/>
+
+<script>
+  const track = () => umami.track();
+  document.removeEventListener("astro:after-swap", track);
+  document.addEventListener("astro:after-swap", track);
+</script>
