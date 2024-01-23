@@ -10,21 +10,23 @@ interface Props {
 const { tech, slug } = Astro.props;
 
 let icon;
+let id;
 let name = tech;
 
 const technologyEntry: CollectionEntry<"technologies"> =
   await getEntry("technologies", tech.toLowerCase().replaceAll(" ", "-"));
 
 if (technologyEntry && technologyEntry.data) {
+  id = technologyEntry.id;
   icon = technologyEntry.data.icon;
   name = technologyEntry.data.name;
 }
 ---
-
-<span
-  class="dark:bg-gray-700 bg-gray-100 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
-  {icon &&
-    <Icon icon={icon} class="w-3 h-3" />
-  }
-  {name}
-</span>
+<a class="no-underline" href={id && `/technologies/${id}`}>
+  <span
+    class="dark:bg-gray-700 bg-gray-100 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+    {icon &&
+      <Icon icon={icon} class="w-3 h-3" />}
+    {name}
+  </span>
+</a>

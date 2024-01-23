@@ -1,0 +1,56 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import DateChip from "../../components/DateChip.astro";
+import StickyHeader from "../../components/StickyHeader.astro";
+import ProjectIcon from "../../components/ProjectIcon.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+export async function getStaticPaths() {
+  const techEntries = await getCollection("technologies");
+  return techEntries.map(entry => ({
+    params: { slug: entry.id }, props: { entry },
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"technologies">;
+}
+
+const { entry } = Astro.props;
+const { icon, name, experience } = entry.data;
+const id = entry.id;
+
+const projects = await getCollection("projects", (proj) => {
+  return proj.data.technologies?.some(id => id.toLowerCase().replace(" ", "-") === entry.id);
+});
+---
+
+<BaseLayout>
+  <article
+    class="relative prose prose-sm dark:prose-invert max-w-4xl mx-auto px-4 py-8 sm:px-12 sm:py-16 overflow-x-clip">
+    <StickyHeader>
+      {icon &&
+        <ProjectIcon icon={icon} />}
+      <div class="flex flex-col">
+        <h2 class="m-0">{name}</h2>
+      </div>
+      {experience &&
+        <div class="ml-auto text-sm font-mono">
+          {experience}
+        </div>
+      }
+    </StickyHeader>
+    <hr />
+    <div class="space-y-8">
+      <h3>My projects using {name}</h3>
+      <div class="grid grid-cols-2 gap-4">
+        {
+          projects.map(proj => (
+            <ProjectCard project={proj} />
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</BaseLayout>
