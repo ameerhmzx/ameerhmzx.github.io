@@ -44,7 +44,7 @@ const projects = await getCollection("projects", (proj) => {
     <hr />
     <div class="space-y-8">
       <h3>My projects using {name}</h3>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid sm:grid-cols-2 gap-4">
         {
           projects.map(proj => (
             <ProjectCard project={proj} />
