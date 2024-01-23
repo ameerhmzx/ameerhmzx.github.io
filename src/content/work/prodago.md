@@ -16,15 +16,14 @@ technologies:
   - React
   - TypeScript
   - JavaScript
-  - React Query
+  - Tanstack Query
   - Material UI
-  - Tailwind CSS
+  - Tailwind
   - Python
   - OpenAI
-  - LLM
   - LangChain
-  - C#
-  - .NET
+  - C Sharp
+  - dotnet
   - Azure
   - Docker
   - Git

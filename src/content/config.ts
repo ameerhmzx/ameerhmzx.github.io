@@ -12,7 +12,9 @@ const projects = defineCollection({
       description: z.string(),
       draft: z.boolean().optional(),
       position: reference("education").or(reference("work")).optional(),
-      technologies: z.array(z.string()).optional(),
+      technologies: z
+        .array(z.string().or(reference("technologies")))
+        .optional(),
       links: z
         .array(
           z.object({
@@ -52,7 +54,9 @@ const work = defineCollection({
       description: z.string().optional(),
       location: z.string(),
       url: z.string().url().optional(),
-      technologies: z.array(z.string()).optional(),
+      technologies: z
+        .array(z.string().or(reference("technologies")))
+        .optional(),
     }),
 });
 
@@ -70,9 +74,21 @@ const recommendations = defineCollection({
     }),
 });
 
+const technologies = defineCollection({
+  type: "data",
+  schema: () =>
+    z.object({
+      name: z.string(),
+      icon: z.string().optional(),
+      url: z.string().url().optional(),
+      experience: z.string().optional(),
+    }),
+});
+
 export const collections = {
   recommendations,
   education,
   projects,
   work,
+  technologies,
 };

@@ -1,13 +1,30 @@
 ---
+import { CollectionEntry, getEntry } from "astro:content";
+import Icon from "./Icon.astro";
+
 interface Props {
   tech: string;
   slug: string;
 }
 
 const { tech, slug } = Astro.props;
+
+let icon;
+let name = tech;
+
+const technologyEntry: CollectionEntry<"technologies"> =
+  await getEntry("technologies", tech.toLowerCase().replaceAll(" ", "-"));
+
+if (technologyEntry && technologyEntry.data) {
+  icon = technologyEntry.data.icon;
+  name = technologyEntry.data.name;
+}
 ---
 
 <span
-  class="dark:bg-gray-700 bg-gray-100 px-2 py-0.5 rounded-full text-xs font-bold">
-  {tech}
+  class="dark:bg-gray-700 bg-gray-100 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+  {icon &&
+    <Icon icon={icon} class="w-3 h-3" />
+  }
+  {name}
 </span>
