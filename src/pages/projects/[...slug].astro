@@ -56,6 +56,7 @@ const isWork = positionEntry?.collection === "work";
           </a>
         }
       </div>
+      {data.draft && <span class="ml-8 bg-sky-300 px-4">Draft</span>}
       <DateChip
         className="hidden sm:block ml-auto"
         startDate={data.startDate}

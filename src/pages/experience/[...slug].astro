@@ -32,10 +32,10 @@ const { icon, title, role, description, technologies, url, location } = data;
 
 const projects = await getCollection("projects", (projectEntry) => {
   const inDraft = projectEntry.data.draft ?? false;
+  const shouldShow = import.meta.env.PROD ? !inDraft : true;
   const position = projectEntry.data.position ?? null;
-  if (inDraft || !position) return false;
 
-  return position.slug === slug;
+  return shouldShow && position && position.slug === slug;
 });
 ---
 
