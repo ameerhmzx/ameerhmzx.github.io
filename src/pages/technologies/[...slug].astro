@@ -21,7 +21,11 @@ const { icon, name, experience } = entry.data;
 const id = entry.id;
 
 const projects = await getCollection("projects", (proj) => {
-  return proj.data.technologies?.some(id => id.toLowerCase().replace(" ", "-") === entry.id);
+  const haveTech = proj.data.technologies?.some(id => id.toLowerCase().replace(" ", "-") === entry.id);
+  const inDraft = proj.data.draft ?? false;
+  const shouldShow = import.meta.env.PROD ? !inDraft : true;
+
+  return shouldShow && haveTech;
 });
 ---
 
