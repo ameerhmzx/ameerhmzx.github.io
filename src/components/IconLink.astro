@@ -10,9 +10,6 @@ const { url, text, icon } = Astro.props;
 ---
 
 <a href={url} target="_blank"
-   data-umami-event="Link Clicked"
-   data-umami-event-label={text}
-   data-umami-event-url={url}
    class="inline-flex link gap-1 items-center flex-nowrap whitespace-nowrap text-sm text-inherit py-1">
   <Icon icon={icon} />
   {text}

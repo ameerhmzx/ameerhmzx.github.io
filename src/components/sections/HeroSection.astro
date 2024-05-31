@@ -34,11 +34,11 @@ import { Image } from "astro:assets";
         solutions.
       </p>
       <div class="mt-8 flex sm:flex-row flex-col gap-4">
-        <Button data-umami-event="CTA button" href="https://www.linkedin.com/in/ameerhmzx">
+        <Button className="plausible-event-name=CTA" href="https://www.linkedin.com/in/ameerhmzx">
           <Icon slot="start-icon" icon="linkedin-solid" className="w-5 h-5" />
           Let's Connect
         </Button>
-        <Button data-umami-event="Contact button" variant="text" onclick={`scrollToSection("contact");`}>
+        <Button className="plausible-event-name=Contact" variant="text" onclick={`scrollToSection("contact");`}>
           #Contact
         </Button>
       </div>
@@ -57,11 +57,10 @@ import { Image } from "astro:assets";
   <span
     class="absolute bottom-4 items-center justify-center inset-x-0 opacity-40 hidden lg:flex animate-bounce">
     <Button
-      data-umami-event="Scroll Down button"
       id="scroll-down"
       variant="text"
       onclick={`scrollToSection("projects");`}
-      className="text-xs italic duration-300">
+      className="plausible-event-name=Scroll+Down text-xs italic duration-300">
       <Icon slot="start-icon" icon="mouse" />
       Scroll Down
     </Button>

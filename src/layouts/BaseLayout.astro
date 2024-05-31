@@ -78,16 +78,17 @@ const { title, description, className } = Astro.props;
     }
 </style>
 
-<script
-  is:inline
-  async
-  src="https://stats.sx.ameerhmzx.com/script.js"
-  data-website-id="18a44ff1-f204-445d-a8ba-95826fd74095"
-  data-domains="ameerhmzx.com"
-/>
+<script is:inline defer data-domain="ameerhmzx.com"
+        src="https://stats.sx.ameerhmzx.com/js/script.tagged-events.outbound-links.js"></script>
 
 <script>
-  const track = () => umami.track(props => ({ ...props, url: location.pathname }));
+  window.plausible = window.plausible || function() {
+    (window.plausible.q = window.plausible.q || []).push(arguments);
+  };
+</script>
+
+<script>
+  const track = () => plausible("pageview");
   document.removeEventListener("astro:after-swap", track);
   document.addEventListener("astro:after-swap", track);
 </script>
