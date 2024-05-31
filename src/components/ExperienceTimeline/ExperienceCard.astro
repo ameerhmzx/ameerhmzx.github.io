@@ -11,23 +11,6 @@ const { experience } = Astro.props;
 const { icon, title, description, location, role, degree } = experience.data;
 const slug = experience.slug;
 
-function calculateDuration(startDate: Date, endDate?: Date): string {
-  const start = startDate;
-  const end = endDate || new Date();
-  const years = end.getFullYear() - start.getFullYear();
-  const months = end.getMonth() - start.getMonth();
-  const days = end.getDate() - start.getDate() + 1;
-
-  const totalDays = years * 365 + months * 30 + days;
-  const totalYears = totalDays / 365;
-  const totalMonths = totalDays / 30;
-
-  if (totalDays < 30) return `${totalDays.toFixed(0)} days`;
-  if (totalYears < 1) return `${(totalMonths).toFixed(1)} months`;
-  return `${totalYears.toFixed(1)} years`;
-}
-
-const duration = calculateDuration(experience.data.startDate, experience.data.endDate);
 const isWork = experience.collection === "work";
 ---
 
@@ -47,9 +30,10 @@ const isWork = experience.collection === "work";
           class="m-0 group-hover:underline underline-offset-2">{title}</h3>
       <p class="m-0 text-xs font-mono opacity-60 -mt-1">{isWork ? role : degree}</p>
     </div>
-    <span class="ml-auto sm:self-start text-xs opacity-60">
-      {duration}
-    </span>
+    <x-duration data-start={experience.data.startDate} data-end={experience.data.endDate}
+                class="ml-auto sm:self-start text-xs opacity-60">
+      -
+    </x-duration>
   </div>
   <p class="text-sm line-clamp-5 sm:line-clamp-3 m-0 opacity-75">{description}</p>
   <span class="flex items-center gap-1">
@@ -57,3 +41,34 @@ const isWork = experience.collection === "work";
     <p class="m-0 text-xs">{location}</p>
   </span>
 </a>
+
+<script>
+  class Duration extends HTMLElement {
+    constructor() {
+      super();
+
+      const start = new Date(this.dataset.start);
+      const end = this.dataset.end ? new Date(this.dataset.end) : undefined;
+
+      this.innerText = this.calculateDuration(start, end);
+    }
+
+    calculateDuration(startDate: Date, endDate?: Date): string {
+      const start = startDate;
+      const end = endDate || new Date();
+      const years = end.getFullYear() - start.getFullYear();
+      const months = end.getMonth() - start.getMonth();
+      const days = end.getDate() - start.getDate() + 1;
+
+      const totalDays = years * 365 + months * 30 + days;
+      const totalYears = totalDays / 365;
+      const totalMonths = totalDays / 30;
+
+      if (totalDays < 30) return `${totalDays.toFixed(0)} days`;
+      if (totalYears < 1) return `${(totalMonths).toFixed(1)} months`;
+      return `${totalYears.toFixed(1)} years`;
+    }
+  }
+
+  customElements.define("x-duration", Duration);
+</script>
