@@ -5,13 +5,6 @@ import avatarImage from "../../assets/avatar.png";
 import { Image } from "astro:assets";
 ---
 
-<script is:inline>
-  function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    section?.scrollIntoView({ behavior: "smooth" });
-  }
-</script>
-
 <section class="circuit relative !mt-0 border-b-2 dark:border-gray-900 border-gray-50">
   <div
     class="grid grid-cols-1 min-h-[100dvh] lg:grid-cols-2 px-4 py-8 sm:px-12 sm:py-16 gap-16 mx-auto max-w-6xl container">
@@ -34,11 +27,11 @@ import { Image } from "astro:assets";
         solutions.
       </p>
       <div class="mt-8 flex sm:flex-row flex-col gap-4">
-        <Button className="plausible-event-name=CTA" href="https://www.linkedin.com/in/ameerhmzx">
+        <Button id="cta-btn" href="https://www.linkedin.com/in/ameerhmzx">
           <Icon slot="start-icon" icon="linkedin-solid" className="w-5 h-5" />
           Let's Connect
         </Button>
-        <Button className="plausible-event-name=Contact" variant="text" onclick={`scrollToSection("contact");`}>
+        <Button id="contact-btn" variant="text">
           #Contact
         </Button>
       </div>
@@ -60,12 +53,32 @@ import { Image } from "astro:assets";
       id="scroll-down"
       variant="text"
       onclick={`scrollToSection("projects");`}
-      className="plausible-event-name=Scroll+Down text-xs italic duration-300">
+      className="text-xs italic duration-300">
       <Icon slot="start-icon" icon="mouse" />
       Scroll Down
     </Button>
   </span>
 </section>
+
+<script is:inline>
+  function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    section?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  document.getElementById("cta-btn").addEventListener("click", () => {
+    plausible.trackEvent("CTA");
+  });
+
+  document.getElementById("contact-btn").addEventListener("click", () => {
+    scrollToSection("contact");
+    plausible.trackEvent("Contact");
+  });
+
+  document.getElementById("scroll-down").addEventListener("click", () => {
+    plausible.trackEvent("Scroll Down");
+  });
+</script>
 
 <style>
     .circuit {

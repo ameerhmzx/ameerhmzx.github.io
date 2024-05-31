@@ -78,17 +78,21 @@ const { title, description, className } = Astro.props;
     }
 </style>
 
-<script is:inline defer data-domain="ameerhmzx.com"
-        src="https://stats.sx.ameerhmzx.com/js/script.tagged-events.outbound-links.js"></script>
-
 <script>
-  window.plausible = window.plausible || function() {
-    (window.plausible.q = window.plausible.q || []).push(arguments);
-  };
-</script>
+  import Plausible from "plausible-tracker";
 
-<script>
-  const track = () => plausible("pageview");
+  window.plausible = Plausible({
+    domain: "ameerhmzx.com",
+    trackLocalhost: false,
+    apiHost: "https://stats.sx.ameerhmzx.com",
+  });
+
+  const track = () => plausible.trackPageview();
   document.removeEventListener("astro:after-swap", track);
   document.addEventListener("astro:after-swap", track);
+
+  // track initial page
+  plausible.trackPageview();
+
+  plausible.enableAutoOutboundTracking();
 </script>
