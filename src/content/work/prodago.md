@@ -7,11 +7,8 @@ role: Lead Software Engineer
 teamSize: 6 - 8
 startDate: 2022-08-15
 description:
-  "Prodago specializes in offering cutting-edge data and AI governance solutions.
-  Our platform is designed to empower organizations in implementing effective governance frameworks.
-  With Prodago, companies can seamlessly manage various aspects of governance,
-  including data quality, privacy, security, and other critical initiatives.
-  We provide the tools and support needed for organizations to uphold high standards in their data and AI practices."
+  "Prodago offers advanced data and AI governance solutions, enabling organizations to implement effective governance frameworks. 
+  Their platform helps manage data quality, privacy, security, and other critical governance aspects,"
 technologies:
   - React
   - TypeScript
@@ -31,14 +28,10 @@ technologies:
   - ClickUp
 ---
 
-I played a pivotal role in the development of Prodago's core web application, employing React and .NET technologies.
-As the lead developer for the frontend,
-I not only spearheaded its creation but also made substantial contributions to the backend.
-
-Currently, my focus is on a new Prodago product—an AI engine poised to revolutionize the governance
-process through automation. In this capacity, I am tasked with architecting the application and leading
-its development. The venture into the AI domain has been a rich learning experience, particularly in navigating
-the challenges of constructing a scalable and reliable AI SaaS application.
+I led the development of Prodago's core web application using React, significantly improving its architecture and
+contributing to both the frontend and backend. Currently, I'm focused on a new AI engine for Prodago, aimed at
+automating governance processes. This role involves architecting and leading the development of a scalable and reliable
+AI SaaS application, providing valuable learning experiences in the AI field.
 
 - Transitioned frontend app from Kubernetes to static hosting, saving up to 100% on hosting.
 - Managed a high-performing team of 6-8 members, boosting productivity by 20% with agile methods.
