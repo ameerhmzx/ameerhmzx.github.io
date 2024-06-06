@@ -8,6 +8,25 @@ location: Lahore, Pakistan
 role: Full Stack Developer
 startDate: 2020-09-01
 endDate: 2022-08-15
+technologies:
+  - React
+  - TypeScript
+  - JavaScript
+  - Tailwind
+  - Python
+  - Docker
+  - Git
+  - Github
+  - Digital Ocean
+  - Linode
+  - Strapi
+  - Node
+  - Next
+  - Svelte
+  - Stripe
+  - WordPress
+  - Shopify
+  - Hydrogen
 ---
 
 - Spearheaded the development and delivery of over 10 projects, using diverse web tech.

@@ -39,6 +39,9 @@ const education = defineCollection({
       description: z.string().optional(),
       location: z.string(),
       url: z.string().url().optional(),
+      technologies: z
+        .array(z.string().or(reference("technologies")))
+        .optional(),
     }),
 });
 

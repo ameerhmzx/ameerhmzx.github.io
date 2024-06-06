@@ -9,6 +9,25 @@ description: "I have completed my bachelor's degree in Computer Science from Com
 url: https://lahore.comsats.edu.pk/
 startDate: 2018-10-01
 endDate: 2022-10-01
+technologies:
+  - React
+  - Next
+  - Node
+  - TypeScript
+  - JavaScript
+  - Tailwind
+  - Python
+  - Django
+  - Celery
+  - Redis
+  - Postgres
+  - Docker
+  - Java
+  - React Native
+  - Android Studio
+  - Flutter
+  - Git
+  - Github
 ---
 
 
