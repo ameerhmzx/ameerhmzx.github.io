@@ -45,15 +45,19 @@ const projects = await getCollection("projects", (proj) => {
       }
     </StickyHeader>
     <hr />
-    <div class="space-y-8">
-      <h3>My projects using {name}</h3>
-      <div class="grid sm:grid-cols-2 gap-4">
-        {
-          projects.map(proj => (
-            <ProjectCard project={proj} />
-          ))
-        }
+    {(projects && projects.length > 0) ?
+      <div class="space-y-8">
+        <h3>My projects using {name}</h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {
+            projects.map(proj => (
+              <ProjectCard project={proj} />
+            ))
+          }
+        </div>
       </div>
-    </div>
+      :
+      <p>No {name} projects have been listed yet.</p>
+    }
   </article>
 </BaseLayout>
